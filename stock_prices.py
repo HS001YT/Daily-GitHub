@@ -26,6 +26,6 @@ plt.xlabel("Months", fontsize = 15)
 plt.ylabel("Stock Prices", fontsize = 15)
 
 plt.get_current_fig_manager().set_window_title("Day 4")
-plt.savefig("other_files\Day4.2.png", dpi=300, bbox_inches="tight")
+plt.savefig("other_files\Day4.1.png", dpi=300, bbox_inches="tight")
 
 plt.show()

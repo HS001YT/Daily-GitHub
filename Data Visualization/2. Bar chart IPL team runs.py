@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Read the CSV file
-deliveries = pd.read_csv("D:\Daily-GitHub\other_files\deliveries.csv")
+deliveries = pd.read_csv("D:\Daily-GitHub\Data Visualization\other_files\deliveries.csv")
 
 # Calculate Total runs per team
 team_runs = deliveries.groupby("batting_team")["total_runs"].sum().sort_values(ascending=False)
@@ -37,7 +37,7 @@ plt.annotate("Data Source: Kaggle IPL Dataset",
 # Change window title
 plt.get_current_fig_manager().set_window_title("Day 2")
 
-plt.savefig("other_files\Day2.png", dpi=300, bbox_inches="tight")
+# plt.savefig("D:\Daily-GitHub\Data Visualization\other_files\Day2.png", dpi=300, bbox_inches="tight")
 plt.show()
 
 # Day2.png is also uploaded in the other_files folder. You can also check that.

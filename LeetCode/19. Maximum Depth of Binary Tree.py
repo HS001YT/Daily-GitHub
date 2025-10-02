@@ -11,7 +11,11 @@ class Solution:
         # base case
         if root is None:
             return 0
-        # compute depths of subtrees and add 1 for current node
+        
+        # This question can be solved by getting the max height between left and right and adding one for that element
+        # Time Complexity - O(n) as it iterates through each element
+        # Space Complexity - O(height) as recursive functions runs only the height amount of times
+
         left_depth = self.maxDepth(root.left)
         right_depth = self.maxDepth(root.right)
         return 1 + max(left_depth, right_depth)

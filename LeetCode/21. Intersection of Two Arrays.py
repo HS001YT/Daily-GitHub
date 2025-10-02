@@ -1,6 +1,11 @@
+# Intersection means returning the common elements between the two lists
+
 class Solution:
     def intersection(self, nums1: list[int], nums2: list[int]) -> list[int]:
-        # use set for uniqueness and O(1) lookup
+
+        # First make the lists with only unique values
         set1 = set(nums1)
         set2 = set(nums2)
-        return list(set1 & set2)  # intersection of sets
+
+        # Now return the common elements in sets by forming list of them by using and (&).
+        return list(set1 & set2)

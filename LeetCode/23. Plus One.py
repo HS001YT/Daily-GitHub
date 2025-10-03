@@ -1,15 +1,13 @@
 class Solution:
-    def plusOne(self, digits: list[int]) -> List[int]:
-        if digits[len(digits) - 2] == 9:
+    def plusOne(self, digits: List[int]) -> List[int]:
 
-            # It is not working for [9,9] make a for loop backward that continously checks for 9 in end and then use the conditions again
+        for i in range(len(digits) - 1, -1, -1):   # iterate backwards
 
-            if len(digits) == 1:
-                digits = [1, 0]
-            else:
-                digits[len(digits) - 2] += 1
-                digits[len(digits) - 1] = 0
-        else:
-            digits[len(digits) - 1] += 1
-        
-        return digits
+            if digits[i] == 9:  # Checks last digit is 9?
+                digits[i] = 0
+            else:               # Not 9, then simply add 1
+                digits[i] += 1
+                return digits
+
+        # This return works when loop end with if only i.e, all were 9s
+        return [1] + [0] * len(digits)

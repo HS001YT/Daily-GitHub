@@ -14,7 +14,7 @@ plt.title("Scatter plot of Car Prices vs Mileage", \
 plt.xlabel("Mileage", fontsize=14, fontweight="bold")
 plt.ylabel("Prices", fontsize=14, fontweight="bold")
 
-plt.get_current_fig_manager().set_window_title("Day 8")
+plt.get_current_fig_manager().set_window_title("Day 12")
 # plt.savefig("D:\Daily-GitHub\Data Visualization\other_files\Day12.png", dpi=300, bbox_inches="tight")
 
 plt.show()

@@ -7,3 +7,4 @@ matplotlib<br>
 yfinance<br>
 seaborn<br>
 sklearn<br>
+plotly, kaleido<br>

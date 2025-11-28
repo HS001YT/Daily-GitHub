@@ -1,0 +1,37 @@
+CREATE DATABASE company;
+
+USE company;
+
+CREATE TABLE employees (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    salary INT
+);
+
+INSERT INTO employees (name, salary) VALUES
+('Harshit', 50000),
+('Aarav', 75000),
+('Riya', 60000),
+('Mohan', 75000),
+('Neha', 85000),
+('Karan', 45000);
+
+SELECT * FROM employees;
+
+| id | name    | salary |
+| -- | ------- | ------ |
+| 1  | Harshit | 50000  |
+| 2  | Aarav   | 75000  |
+| 3  | Riya    | 60000  |
+| 4  | Mohan   | 75000  |
+| 5  | Neha    | 85000  |
+| 6  | Karan   | 45000  |
+
+SELECT MAX(salary) AS second_highest_salary
+FROM employees
+WHERE salary < (SELECT MAX(salary) FROM employees);
+
+| second_highest_salary |
+| --------------------- |
+| 75000                 |
+

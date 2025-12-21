@@ -36,7 +36,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: var(--dark-gradient);
+    background: radial-gradient(circle at top, #0b1d3a, #020617);
     color: var(--flare-text);
     min-height: 100vh;
     overflow-x: hidden;

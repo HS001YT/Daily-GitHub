@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | FlareBook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+<div class="auth-container">
+
+    <!-- LOGIN -->
+    <div class="auth-box">
+        <h2>Login</h2>
+
+        <input type="email" placeholder="Email" id="loginEmail">
+        <input type="password" placeholder="Password" id="loginPassword">
+
+        <!-- Funny Captcha -->
+        <div class="captcha">
+            <span id="captchaText"></span>
+            <input type="text" placeholder="Type the magic word" id="captchaInput">
+        </div>
+
+        <button onclick="loginUser()">Login</button>
+        <p class="switch" onclick="showRegister()">Don't have an account? Register</p>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="auth-box hidden" id="registerBox">
+        <h2>Register</h2>
+
+        <select id="accountType">
+            <option value="personal">Personal</option>
+            <option value="business">Business</option>
+        </select>
+
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email (verification later)">
+        <input type="password" placeholder="Password">
+        <input type="password" placeholder="Confirm Password">
+
+        <!-- Business extra fields (prototype) -->
+        <div id="businessFields" class="hidden">
+            <input type="text" placeholder="Business Name">
+            <input type="text" placeholder="GSTIN (Yes/No)">
+            <input type="text" placeholder="Designation">
+            <input type="text" placeholder="PAN Number">
+            <input type="text" placeholder="Business Address">
+            <input type="text" placeholder="Pin Code">
+        </div>
+
+        <!-- Social login placeholders -->
+        <div class="social">
+            <img src="../assets/images/icons/google.png" alt="Google">
+            <img src="../assets/images/icons/microsoft.png" alt="Microsoft">
+        </div>
+
+        <button>Register</button>
+        <p class="switch" onclick="showLogin()">Already have an account? Login</p>
+    </div>
+
+</div>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

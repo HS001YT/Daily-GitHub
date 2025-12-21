@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | FlareBook Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+<div class="auth-wrapper">
+
+    <h1>Login / Register</h1>
+
+    <!-- TABS -->
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('login')">Login</button>
+        <button class="tab" onclick="switchTab('person')">Person</button>
+        <button class="tab" onclick="switchTab('business')">Business</button>
+    </div>
+
+    <!-- FORM BOX -->
+    <div class="form-box">
+
+        <!-- LOGIN -->
+        <form id="loginForm" class="form active">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+
+            <div class="captcha">
+                <span id="captchaText"></span>
+                <input type="text" placeholder="Type captcha">
+            </div>
+
+            <button type="button" onclick="loginUser()">Login</button>
+        </form>
+
+        <!-- PERSON REGISTER -->
+        <form id="personForm" class="form">
+            <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="Email (verification later)">
+            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Confirm Password">
+
+            <div class="social">
+                <img src="../assets/images/icons/google.png">
+                <img src="../assets/images/icons/microsoft.png">
+            </div>
+
+            <button type="button">Register</button>
+        </form>
+
+        <!-- BUSINESS REGISTER -->
+        <form id="businessForm" class="form">
+            <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="Email">
+            <input type="text" placeholder="Phone Number">
+            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Confirm Password">
+
+            <hr>
+
+            <input type="text" placeholder="Business Name">
+            <input type="text" placeholder="GSTIN (Yes / No)">
+            <input type="text" placeholder="Designation">
+            <input type="text" placeholder="PAN Number">
+            <input type="text" placeholder="Business Address">
+            <input type="text" placeholder="Pin Code">
+
+            <button type="button">Continue</button>
+        </form>
+
+    </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

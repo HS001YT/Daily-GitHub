@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - FlareBook Store</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <main class="orders-page main-content-area">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">My Orders</h1>
+                <p class="page-subtitle">Track and manage your purchases</p>
+            </div>
+
+            <div class="orders-container">
+                <!-- Order Filters -->
+                <div class="order-filters">
+                    <button class="filter-btn active">All Orders</button>
+                    <button class="filter-btn">Pending</button>
+                    <button class="filter-btn">Delivered</button>
+                    <button class="filter-btn">Cancelled</button>
+                </div>
+
+                <!-- Orders List -->
+                <div class="orders-list">
+                    <!-- Order 1 -->
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div>
+                                <h3>Order #ORD-789456</h3>
+                                <p class="order-date">Placed on Dec 15, 2023</p>
+                            </div>
+                            <div class="order-status delivered">Delivered</div>
+                        </div>
+                        
+                        <div class="order-items">
+                            <div class="order-item">
+                                <img src="https://via.placeholder.com/80x100" alt="Book" class="book-image">
+                                <div class="item-details">
+                                    <h4>The Great Gatsby</h4>
+                                    <p>F. Scott Fitzgerald</p>
+                                    <p class="item-price">$12.99</p>
+                                </div>
+                                <div class="item-quantity">Qty: 1</div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-footer">
+                            <div class="order-total">
+                                <strong>Total: $14.98</strong>
+                                <small>(Including $1.99 shipping)</small>
+                            </div>
+                            <div class="order-actions">
+                                <button class="action-btn">View Details</button>
+                                <button class="action-btn">Buy Again</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order 2 -->
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div>
+                                <h3>Order #ORD-123456</h3>
+                                <p class="order-date">Placed on Nov 28, 2023</p>
+                            </div>
+                            <div class="order-status processing">Processing</div>
+                        </div>
+                        
+                        <div class="order-items">
+                            <div class="order-item">
+                                <img src="https://via.placeholder.com/80x100" alt="Book" class="book-image">
+                                <div class="item-details">
+                                    <h4>To Kill a Mockingbird</h4>
+                                    <p>Harper Lee</p>
+                                    <p class="item-price">$14.99</p>
+                                </div>
+                                <div class="item-quantity">Qty: 2</div>
+                            </div>
+                            <div class="order-item">
+                                <img src="https://via.placeholder.com/80x100" alt="Book" class="book-image">
+                                <div class="item-details">
+                                    <h4>1984</h4>
+                                    <p>George Orwell</p>
+                                    <p class="item-price">$10.99</p>
+                                </div>
+                                <div class="item-quantity">Qty: 1</div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-footer">
+                            <div class="order-total">
+                                <strong>Total: $43.96</strong>
+                                <small>(Free shipping)</small>
+                            </div>
+                            <div class="order-actions">
+                                <button class="action-btn">Track Order</button>
+                                <button class="action-btn cancel">Cancel Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" style="display: none;">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h3>No Orders Yet</h3>
+                    <p>You haven't placed any orders. Start shopping now!</p>
+                    <a href="../index.html" class="submit-btn">Browse Books</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../../assets/components/full-header.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('header-container').innerHTML = html;
+                    if (window.flareBookApp) {
+                        window.flareBookApp.updateUserUI();
+                        window.flareBookApp.bindEvents();
+                    }
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+/* ===== SETTINGS PAGE STYLES ===== */
+.settings-page {
+    margin-top: 100px;
+}
+
+.settings-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Settings Sidebar */
+.settings-sidebar {
+    background: rgba(26, 26, 26, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid var(--flare-gray);
+    height: fit-content;
+    position: sticky;
+    top: 140px;
+}
+
+.settings-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.settings-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    color: var(--flare-text);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all var(--transition-fast);
+}
+
+.settings-nav-link:hover, .settings-nav-link.active {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--flare-primary);
+}
+
+.settings-nav-link i {
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.settings-nav-link.danger {
+    color: #ff6b6b;
+}
+
+.settings-nav-link.danger:hover {
+    background: rgba(255, 107, 107, 0.1);
+}
+
+/* Settings Content */
+.settings-content {
+    background: rgba(26, 26, 26, 0.5);
+    border-radius: 15px;
+    padding: 30px;
+    border: 1px solid var(--flare-gray);
+}
+
+.settings-section {
+    margin-bottom: 40px;
+}
+
+.settings-section:last-child {
+    margin-bottom: 0;
+}
+
+.settings-section h2 {
+    color: var(--flare-primary);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+}
+
+/* Setting Items */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--flare-gray);
+}
+
+.setting-info {
+    flex: 1;
+}
+
+.setting-info h4 {
+    color: var(--flare-text);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.setting-info p {
+    color: var(--flare-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Settings Actions */
+.settings-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--flare-gray);
+}
+
+.settings-actions .submit-btn {
+    flex: 1;
+}
+
+.cancel-btn {
+    padding: 15px 30px;
+    background: var(--flare-gray);
+    border: none;
+    border-radius: 10px;
+    color: var(--flare-text);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.cancel-btn:hover {
+    background: var(--flare-light-gray);
+}
+
+/* Password Change Modal */
+.password-modal .modal-content {
+    max-width: 500px;
+}
+
+.password-strength {
+    margin-top: 10px;
+}
+
+.strength-meter {
+    height: 5px;
+    background: var(--flare-gray);
+    border-radius: 3px;
+    margin: 5px 0;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    background: #ff3860;
+    width: 0%;
+    transition: width 0.3s, background 0.3s;
+}
+
+.strength-fill.weak {
+    width: 33%;
+    background: #ff3860;
+}
+
+.strength-fill.medium {
+    width: 66%;
+    background: #ffa726;
+}
+
+.strength-fill.strong {
+    width: 100%;
+    background: #4caf50;
+}
+
+.strength-text {
+    font-size: 0.85rem;
+    color: var(--flare-text-secondary);
+}
+
+/* Notification Settings */
+.notification-group {
+    margin-top: 20px;
+}
+
+.notification-group h5 {
+    color: var(--flare-text);
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* Privacy Settings */
+.privacy-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.privacy-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.privacy-option input[type="radio"] {
+    accent-color: var(--flare-primary);
+}
+
+.privacy-option label {
+    color: var(--flare-text);
+    cursor: pointer;
+}
+
+.privacy-option p {
+    margin-left: 26px;
+    color: var(--flare-text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Danger Zone */
+.danger-zone {
+    border: 2px solid #ff3860;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.danger-zone h4 {
+    color: #ff3860;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.danger-zone p {
+    color: var(--flare-text-secondary);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.danger-btn {
+    background: #ff3860;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.danger-btn:hover {
+    background: #ff2b56;
+    transform: translateY(-2px);
+}
+
+/* Responsive Settings */
+@media (max-width: 992px) {
+    .settings-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .settings-sidebar {
+        position: static;
+        order: 2;
+    }
+    
+    .settings-content {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .settings-actions {
+        flex-direction: column;
+    }
+    
+    .settings-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .settings-nav-link {
+        flex: 1;
+        min-width: 150px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .settings-nav-link {
+        min-width: 100%;
+    }
+    
+    .settings-section h2 {
+        font-size: 1.3rem;
+    }
+}

@@ -107,8 +107,18 @@ class FlareBookStore {
                     // Show user dropdown menu
                     this.showUserMenu();
                 } else {
-                    window.location.href = 'assets/pages/login.html';
+                // Use correct path based on current location
+                const currentPath = window.location.pathname;
+                let loginPath = 'assets/pages/login.html';
+                
+                // Check if we're already in assets/pages/
+                if (currentPath.includes('assets/pages/')) {
+                    // We're already in the pages folder, just go to login.html
+                    loginPath = 'login.html';
                 }
+                
+                window.location.href = loginPath;
+            }
             });
         }
         
@@ -216,21 +226,31 @@ class FlareBookStore {
         return text.replace(regex, '<mark>$1</mark>');
     }
 
-    showAutocomplete() {
-        const searchInput = document.getElementById('searchInput');
-        const dropdown = document.getElementById('autocompleteDropdown');
-        
-        if (searchInput && dropdown && searchInput.value.trim().length >= 2) {
-            dropdown.classList.add('active');
+    // When showing autocomplete
+showAutocomplete() {
+    const searchInput = document.getElementById('searchInput');
+    const dropdown = document.getElementById('autocompleteDropdown');
+    const searchBox = document.querySelector('.search-box');
+    
+    if (searchInput && dropdown && searchInput.value.trim().length >= 2) {
+        dropdown.classList.add('active');
+        if (searchBox) {
+            searchBox.classList.add('has-dropdown');
         }
     }
+}
 
-    hideAutocomplete() {
-        const dropdown = document.getElementById('autocompleteDropdown');
-        if (dropdown) {
-            dropdown.classList.remove('active');
-        }
+hideAutocomplete() {
+    const dropdown = document.getElementById('autocompleteDropdown');
+    const searchBox = document.querySelector('.search-box');
+    
+    if (dropdown) {
+        dropdown.classList.remove('active');
     }
+    if (searchBox) {
+        searchBox.classList.remove('has-dropdown');
+    }
+}
 
     performSearch() {
         const searchInput = document.getElementById('searchInput');
@@ -351,9 +371,19 @@ class FlareBookStore {
         this.updateUserUI();
         alert('Logged out successfully!');
     }
+
+    toggleHeart(heartElement) {
+    heartElement.classList.toggle('active');
+    heartElement.classList.toggle('far'); // Outline icon
+    heartElement.classList.toggle('fas'); // Filled icon
+    
+    // Update wishlist count
+    this.updateWishlistCount();
+}
 }
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     window.flareBookApp = new FlareBookStore();
 });
+

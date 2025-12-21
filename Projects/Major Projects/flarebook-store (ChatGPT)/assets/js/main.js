@@ -40,7 +40,7 @@ class FlareBookStore {
                 </div>
                 <h2 class="tagline">Discover Books That Spark Your Imagination</h2>
                 <p class="subtagline">Explore our curated collection of books across all genres. From classic literature to modern bestsellers, find your next favorite read.</p>
-                <button class="enter-button" id="enter-login" onclick="window.location.href='login.html'">
+                <button class="enter-button" id="enter-login" onclick="window.location.href='assets/pages/login.html'">
                     Enter Store <i class="fas fa-arrow-right"></i>
                 </button>
             </div>

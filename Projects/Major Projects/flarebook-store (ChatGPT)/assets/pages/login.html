@@ -50,13 +50,8 @@
                     </div>
                     
                     <div class="captcha-container">
-                        <div class="captcha-question">What has keys but can't open locks?</div>
-                        <div class="captcha-options">
-                            <button type="button" class="captcha-option">Piano</button>
-                            <button type="button" class="captcha-option">Door</button>
-                            <button type="button" class="captcha-option">Keyboard</button>
-                            <button type="button" class="captcha-option">Treasure</button>
-                        </div>
+                        <div class="captcha-question" id="captchaQuestion"></div>
+                        <div class="captcha-options" id="captchaOptions"></div>
                     </div>
                     
                     <button type="submit" class="submit-btn">Login</button>
@@ -93,7 +88,7 @@
                     <div id="personal-form">
                         <div class="form-group">
                             <label class="form-label">Full Name</label>
-                            <input type="text" class="form-input" placeholder="John Doe" required>
+                            <input type="text" class="form-input" placeholder="Your Name" required>
                         </div>
                         
                         <div class="form-group">
@@ -112,7 +107,7 @@
                             
                             <div class="form-group">
                                 <label class="form-label">Confirm Password</label>
-                                <input type="password" class="form-input" placeholder="Confirm password" required>
+                                <input type="password" class="form-input" placeholder="Re-enter password" required>
                             </div>
                         </div>
                         
@@ -136,7 +131,7 @@
                             
                             <div class="form-group">
                                 <label class="form-label">Full Name</label>
-                                <input type="text" class="form-input" placeholder="John Doe" required>
+                                <input type="text" class="form-input" placeholder="Your Name" required>
                             </div>
                             
                             <div class="form-group">
@@ -150,7 +145,7 @@
                             <div class="form-group">
                                 <label class="form-label">Phone Number</label>
                                 <div class="verification-container">
-                                    <input type="tel" class="form-input verification-input" placeholder="+91 9876543210" required>
+                                    <input type="tel" class="form-input verification-input" placeholder="9876543210" required>
                                     <button type="button" class="verify-btn" onclick="verifyPhone(this)">Verify</button>
                                 </div>
                             </div>
@@ -221,7 +216,7 @@
                             
                             <div class="form-navigation">
                                 <button type="button" class="nav-btn" onclick="prevBusinessStep()">Previous</button>
-                                <button type="submit" class="nav-btn next">Create Business Account</button>
+                                <button type="button" class="nav-btn next" onclick="completeBusinessRegistration()">Create Business Account</button>
                             </div>
                         </div>
                     </div>
@@ -242,6 +237,8 @@
     </div>
 
     <script>
+        
+
         // Hide loading screen
         setTimeout(() => {
             document.getElementById('loading-screen').style.display = 'none';
@@ -252,9 +249,14 @@
         function switchTab(tab) {
             document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.auth-content').forEach(c => c.classList.remove('active'));
-            
+    
             document.querySelector(`.auth-tab:nth-child(${tab === 'login' ? '1' : '2'})`).classList.add('active');
             document.getElementById(tab + '-content').classList.add('active');
+    
+            // Generate new captcha when switching to login tab
+            if (tab === 'login') {
+                generateCaptcha();
+            }
         }
         
         // Registration type switching
@@ -279,21 +281,57 @@
         
         // Business form steps
         function nextBusinessStep() {
-            // Validate step 1
+            // Check if email is verified
+            const emailVerifyBtn = document.querySelector('#business-step-1 .verify-btn');
+            const phoneVerifyBtn = document.querySelectorAll('#business-step-1 .verify-btn')[1];
+    
+            if (!emailVerifyBtn || emailVerifyBtn.textContent !== '✓ Verified') {
+                alert('Please verify your email before proceeding to Step 2');
+                document.querySelector('#business-step-1 input[placeholder="you@company.com"]').focus();
+                return;
+            }
+    
+            if (!phoneVerifyBtn || phoneVerifyBtn.textContent !== '✓ Verified') {
+                alert('Please verify your phone number before proceeding to Step 2');
+                document.querySelector('#business-step-1 input[placeholder="+91 9876543210"]').focus();
+                return;
+            }
+    
+            // Validate step 1 fields
             const inputs = document.querySelectorAll('#business-step-1 .form-input');
             let isValid = true;
-            
+            let errorMessage = '';
+    
             inputs.forEach(input => {
-                if (!input.value.trim()) isValid = false;
-                if (input.type === 'email' && !input.value.includes('@')) isValid = false;
-                if (input.type === 'password' && input.value.length < 8) isValid = false;
+                if (!input.value.trim()) {
+                    isValid = false;
+                    errorMessage = 'Please fill all fields in Step 1';
+                }
+                
+                if (input.type === 'email' && !input.value.includes('@')) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid email address';
+                }
+                
+                if (input.type === 'password' && input.value.length < 8) {
+                    isValid = false;
+                    errorMessage = 'Password must be at least 8 characters';
+                }
             });
+            
+            // Check password match
+            const password = inputs[3]?.value;
+            const confirmPassword = inputs[4]?.value;
+            if (password !== confirmPassword) {
+                isValid = false;
+                errorMessage = 'Passwords do not match';
+            }
             
             if (isValid) {
                 document.getElementById('business-step-1').classList.remove('active');
                 document.getElementById('business-step-2').classList.add('active');
             } else {
-                alert('Please fill all fields correctly in Step 1');
+                alert(errorMessage);
             }
         }
         
@@ -370,8 +408,57 @@
         // Form submissions
         function handleLogin(e) {
             e.preventDefault();
-            alert('Login successful! (Backend integration pending)');
-            window.location.href = '../../index.html';
+    
+            // Get selected captcha option
+            const selectedCaptcha = document.querySelector('.captcha-option.selected');
+    
+            // Check if captcha is selected and correct (Piano is correct answer)
+            if (!selectedCaptcha) {
+                alert('Please select an answer to the captcha question');
+                return;
+            }
+    
+            if (!currentCaptcha || selectedCaptcha.textContent !== currentCaptcha.correctAnswer) {
+                alert('Incorrect captcha answer. Please try again.');
+                generateCaptcha(); // Generate new captcha on wrong answer
+                return;
+            }
+    
+            // Get login credentials
+            const email = document.querySelector('#login-content input[type="email"]').value;
+            const password = document.querySelector('#login-content input[type="password"]').value;
+            
+            // Basic validation
+            if (!email || !password) {
+                alert('Please enter both email and password');
+                return;
+            }
+            
+            if (!email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Check against stored users
+            const users = JSON.parse(localStorage.getItem('flarebook_users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Save current user
+                localStorage.setItem('flarebook_current_user', JSON.stringify(user));
+                
+                // Check if business account is pending verification
+                if (user.type === 'business' && user.status === 'pending_verification') {
+                    alert(`✅ LOGIN SUCCESSFUL!\n\nWelcome back, ${user.name}!\n\n📋 Account Status: BUSINESS ACCOUNT (Pending Verification)\n⏰ Verification usually takes 2-3 working days\n📚 You can browse and purchase books\n💼 Business features will unlock after verification`);
+                } else {
+                    alert(`✅ LOGIN SUCCESSFUL!\n\nWelcome back, ${user.name}!`);
+                }
+                
+                // Redirect to home page
+                window.location.href = '../../index.html';
+            } else {
+                alert('Invalid email or password. Please try again.');
+            }
         }
         
         function handleRegister(e) {
@@ -390,12 +477,175 @@
             switchTab('login');
         }
         
+        function completeBusinessRegistration() {
+            // Collect all business data
+            const step1Inputs = document.querySelectorAll('#business-step-1 .form-input');
+            const step2Inputs = document.querySelectorAll('#business-step-2 .form-input');
+    
+            let isValid = true;
+    
+            // Validate all required fields
+            step1Inputs.forEach(input => {
+                if (!input.value.trim() && input.hasAttribute('required')) {
+                    isValid = false;
+                }
+            });
+    
+            step2Inputs.forEach(input => {
+                if (!input.value.trim() && input.hasAttribute('required')) {
+                    isValid = false;
+                }
+            });
+    
+            if (!isValid) {
+                alert('Please fill all required fields marked with *');
+                return;
+            }
+    
+            // Collect data
+            const businessData = {
+                // Personal Info
+                fullName: step1Inputs[0]?.value,
+                email: step1Inputs[1]?.value,
+                phone: step1Inputs[2]?.value,
+                password: step1Inputs[3]?.value,
+                
+                // Business Info
+                companyName: step2Inputs[0]?.value,
+                hasGstin: document.querySelector('input[name="has-gstin"]:checked')?.value,
+                gstinNumber: document.getElementById('gstin-field')?.querySelector('.form-input')?.value || 'Not provided',
+                designation: step2Inputs[2]?.value,
+                panNumber: step2Inputs[3]?.value,
+                address: step2Inputs[4]?.value,
+                pincode: step2Inputs[5]?.value,
+                
+                // Metadata
+                registrationDate: new Date().toLocaleDateString(),
+                status: 'pending_verification',
+                accountType: 'business'
+            };
+            
+            // Save to localStorage
+            const businessAccounts = JSON.parse(localStorage.getItem('flarebook_business_accounts')) || [];
+            businessAccounts.push(businessData);
+            localStorage.setItem('flarebook_business_accounts', JSON.stringify(businessAccounts));
+            
+            // Also save as regular user (for login purposes)
+            const users = JSON.parse(localStorage.getItem('flarebook_users')) || [];
+            users.push({
+                id: Date.now(),
+                name: businessData.fullName,
+                email: businessData.email,
+                password: businessData.password, // In real app, hash this!
+                type: 'business',
+                status: 'pending_verification',
+                createdAt: new Date().toISOString()
+            });
+            localStorage.setItem('flarebook_users', JSON.stringify(users));
+            
+            // Show success message with instructions
+            alert(`🎉 BUSINESS ACCOUNT REGISTERED SUCCESSFULLY!\n\n✅ Your account has been created: ${businessData.email}\n✅ Company: ${businessData.companyName}\n\n📋 IMPORTANT NEXT STEPS:\n────────────────────\n1. You can LOGIN and use the site immediately\n2. Your business documents are UNDER REVIEW\n3. Business features will be activated after verification\n4. Verification usually takes 2-3 working days\n\n📞 Our team will contact you at: ${businessData.phone}\n📧 Verification updates sent to: ${businessData.email}\n\n💼 You can browse and purchase books while waiting for verification!`);
+            
+            // Switch back to login tab
+            switchTab('login');
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             // Make sure only personal form is shown initially
             document.getElementById('personal-form').style.display = 'block';
             document.getElementById('business-form').style.display = 'none';
+    
+            // Generate random captcha
+            generateCaptcha();
         });
+
+        const captchaQuestions = [
+            {
+                question: "What has keys but can't open locks?",
+                options: ["Piano", "Door", "Keyboard", "Treasure"],
+                correctAnswer: "Piano"
+            },
+            {
+                question: "Which of these is NOT a book?",
+                options: ["Harry Potter", "To Kill a Mockingbird", "Avocado Toast", "1984"],
+                correctAnswer: "Avocado Toast"
+            },
+            {
+                question: "Complete: 'The ___ in the Hat'",
+                options: ["Dog", "Cat", "Fish", "Bird"],
+                correctAnswer: "Cat"
+            },
+            {
+                question: "What do you use to read an ebook?",
+                options: ["Microwave", "Device/Reader", "Refrigerator", "Toaster"],
+                correctAnswer: "Device/Reader"
+            },
+            {
+                question: "Which animal is known as the 'ship of the desert'?",
+                options: ["Camel", "Horse", "Elephant", "Kangaroo"],
+                correctAnswer: "Camel"
+            }
+        ];
+
+        let currentCaptcha = null;
+
+        // Generate random captcha
+        function generateCaptcha() {
+            // Pick random question
+            const randomIndex = Math.floor(Math.random() * captchaQuestions.length);
+            currentCaptcha = captchaQuestions[randomIndex];
+            
+            // Display question
+            document.getElementById('captchaQuestion').textContent = currentCaptcha.question;
+            
+            // Display options
+            const optionsContainer = document.getElementById('captchaOptions');
+            optionsContainer.innerHTML = '';
+            
+            // Shuffle options
+            const shuffledOptions = [...currentCaptcha.options].sort(() => Math.random() - 0.5);
+            
+            shuffledOptions.forEach(option => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'captcha-option';
+                button.textContent = option;
+                button.onclick = function() { selectCaptcha(this); };
+                optionsContainer.appendChild(button);
+            });
+        }
+        
+        // Select captcha answer
+        function selectCaptcha(clickedButton) {
+            // Remove selected class from all captcha options
+            const allOptions = document.querySelectorAll('.captcha-option');
+            allOptions.forEach(option => option.classList.remove('selected'));
+            
+            // Add selected class to clicked button
+            clickedButton.classList.add('selected');
+        }
+
+        function setupCaptchaSelection() {
+            const captchaOptions = document.querySelectorAll('.captcha-option');
+    
+            captchaOptions.forEach(option => {
+                // Remove existing click listeners
+                option.replaceWith(option.cloneNode(true));
+            });
+    
+            // Re-select after cloning
+            const newCaptchaOptions = document.querySelectorAll('.captcha-option');
+    
+            newCaptchaOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    newCaptchaOptions.forEach(opt => opt.classList.remove('selected'));
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                });
+            });
+        }
     </script>
 </body>
 </html>

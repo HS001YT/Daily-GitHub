@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlareBook Store - Ignite Your Mind</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="logo-container">
+                <div class="square-logo-placeholder">
+                    <img src="assets/images/logo/square_logo.png" alt="FlareBook Logo">
+                </div>
+            </div>
+            <p class="loading-text">Igniting Your Reading Journey...</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="main-content hidden">
+        <!-- Sticky Header -->
+        <header class="main-header">
+            <!-- Top Row (Hides on scroll down) -->
+            <div class="header-top" id="headerTop">
+                <div class="header-section">
+                    <!-- Left: Logo -->
+                    <div class="header-logo">
+                        <img src="assets/images/logo/rectangle_logo.png" alt="FlareBook Store" class="header-logo-img">
+                    </div>
+                    
+                    <!-- Center: Navigation -->
+                    <nav class="header-nav">
+                        <a href="#" class="nav-link active">Home</a>
+                        <a href="#" class="nav-link">Category</a>
+                        <a href="#" class="nav-link">About</a>
+                    </nav>
+                    
+                    <!-- Right: Login Button -->
+                    <div class="header-actions">
+                        <button class="login-btn" id="headerLoginBtn">
+                            <i class="fas fa-user"></i> Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Row (Sticky - Always visible) -->
+            <div class="header-bottom" id="headerBottom">
+                <div class="header-section">
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <div class="search-box">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" class="search-input" id="searchInput" 
+                                   placeholder="Search books, authors, categories..."
+                                   autocomplete="off">
+                            <button class="search-btn">Search</button>
+                        </div>
+                        <div class="autocomplete-dropdown" id="autocompleteDropdown"></div>
+                    </div>
+                    
+                    <!-- Right: Favorites & Cart -->
+                    <div class="header-icons">
+                        <button class="icon-btn" id="favoritesBtn">
+                            <i class="far fa-heart"></i>
+                            <span class="icon-badge">0</span>
+                        </button>
+                        <button class="icon-btn" id="cartBtn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="icon-badge">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content-area">
+            <!-- Your home page content will go here -->
+            <div class="container">
+                <div class="hero-section">
+                    <h1 class="hero-title">Welcome to FlareBook Store</h1>
+                    <p class="hero-subtitle">Discover your next favorite book from our extensive collection</p>
+                </div>
+                
+                <!-- Add more content sections here -->
+                <div class="content-placeholder">
+                    <p>Main website content will be added here...</p>
+                    <p style="height: 2000px; padding: 20px; color: var(--flare-text-secondary);">
+                        Scroll down to see the header effect! ↓↓↓
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

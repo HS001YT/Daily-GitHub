@@ -25,6 +25,7 @@ class HomePage {
         this.initBannerEffects();
         this.initScrollAnimations();
         this.initPreOrderFunctionality();
+        this.initUnderDevelopmentAlerts();
         
         // Update cart/wishlist counts
         this.updateCartWishlistCounts();
@@ -1194,8 +1195,66 @@ formatNumber(num) {
     }
     return num.toString();
 }
+// In home.js initBookInteractions() method:
+viewBookDetails(bookId) {
+    // Navigate to book details page with book ID
+    window.location.href = `assets/pages/book-details.html?id=${bookId}`;
+}
+// ===== SIMPLE UNDER DEVELOPMENT ALERTS =====
+initUnderDevelopmentAlerts() {
+    // Select all clickable elements EXCEPT those in Popular Books section
+    const allSections = [
+        '.sale-book-card-link',
+        '.upcoming-book-card-link', 
+        '.free-book-card-link',
+        '.author-card-link',
+        '.slide-btn',
+        '.bogo-btn',
+        '.view-all',
+        '.btn-free'
+    ];
+    
+    // Combine all selectors
+    const selector = allSections.join(', ');
+    const elements = document.querySelectorAll(selector);
+    
+    elements.forEach(element => {
+        element.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Get section name from class or parent
+            let sectionName = 'This section';
+            if (element.classList.contains('sale-book-card-link')) sectionName = 'Books on Sale';
+            else if (element.classList.contains('upcoming-book-card-link')) sectionName = 'Upcoming Releases';
+            else if (element.classList.contains('free-book-card-link')) sectionName = 'Free Books Section';
+            else if (element.classList.contains('author-card-link')) sectionName = 'Authors Section';
+            else if (element.classList.contains('slide-btn')) sectionName = 'Hero slider';
+            else if (element.classList.contains('bogo-btn')) sectionName = 'BOGO banner';
+            else if (element.classList.contains('view-all')) sectionName = 'View All feature';
+            else if (element.classList.contains('btn-free')) sectionName = 'Free Download';
+            
+            this.showUnderDevelopmentAlert(sectionName);
+        });
+    });
+}
+// Alert message function
+showUnderDevelopmentAlert(sectionName) {
+    alert(`🚧 ${sectionName} Under Development\n\nThis feature is currently being worked on.\nPlease check back soon!`);
+}
 }
 
+
+// Also update book card click event:
+bookCard.addEventListener('click', (e) => {
+    // Only trigger if not clicking on buttons
+    if (!e.target.closest('.overlay-btn')) {
+        const bookId = card.querySelector('[data-book-id]')?.dataset.bookId;
+        if (bookId) {
+            this.viewBookDetails(bookId);
+        }
+    }
+});
 // Initialize home page when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     // Check if we're on the home page

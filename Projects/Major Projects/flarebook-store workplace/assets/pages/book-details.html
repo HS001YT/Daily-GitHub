@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details - FlareBook Store</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/icons/favicon.png">
+</head>
+<body>
+    <!-- Main Content -->
+    <div id="main-content" class="main-content hidden">
+        <!-- Header will be loaded here -->
+        <div id="header-container"></div>
+
+        <!-- Main Content Area -->
+        <main class="main-content-area">
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb-container container">
+                <a href="../../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="category.html" class="breadcrumb-link">Books</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="current-page" id="breadcrumb-title">Book Details</span>
+            </div>
+
+            <!-- Book Details Section -->
+            <section class="book-details-section">
+                <div class="container">
+                    <div class="book-details-wrapper">
+                        <!-- Left: Book Image & Actions -->
+                        <div class="book-details-left">
+                            <div class="book-main-image">
+                                <img id="bookMainImage" src="" alt="Book Cover">
+                                <div class="book-image-badges">
+                                    <span class="book-badge" id="bookBadge">Bestseller</span>
+                                </div>
+                            </div>
+                            
+                            <div class="book-image-thumbnails">
+                                <div class="thumbnail active" data-image="main">
+                                    <img id="bookThumb1" src="" alt="Book Cover Thumbnail">
+                                </div>
+                                <div class="thumbnail" data-image="back">
+                                    <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Back Cover">
+                                </div>
+                                <div class="thumbnail" data-image="preview">
+                                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Preview Pages">
+                                </div>
+                            </div>
+                            
+                            <div class="book-share-section">
+                                <p class="share-label">Share this book:</p>
+                                <div class="share-buttons">
+                                    <button class="share-btn facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </button>
+                                    <button class="share-btn twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </button>
+                                    <button class="share-btn pinterest">
+                                        <i class="fab fa-pinterest-p"></i>
+                                    </button>
+                                    <button class="share-btn copy-link">
+                                        <i class="fas fa-link"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Center: Book Information -->
+                        <div class="book-details-center">
+                            <div class="book-header">
+                                <h1 class="book-title" id="bookTitle">Book Title</h1>
+                                <div class="book-meta">
+                                    <span class="book-author" id="bookAuthor">By Author Name</span>
+                                    <span class="book-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <span class="rating-count" id="ratingCount">(4,289 ratings)</span>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="book-price-section">
+                                <div class="price-display">
+                                    <span class="current-price" id="currentPrice">$15.99</span>
+                                    <span class="original-price" id="originalPrice">$24.99</span>
+                                    <span class="discount-percent" id="discountPercent">-35%</span>
+                                </div>
+                                <div class="stock-status in-stock" id="stockStatus">
+                                    <i class="fas fa-check-circle"></i> In Stock
+                                </div>
+                            </div>
+                            
+                            <div class="book-description">
+                                <h3>Description</h3>
+                                <p id="bookDescription">
+                                    A psychological thriller of obsession and dangerous love. The Silent Patient is a shocking psychological thriller of a woman's act of violence against her husband - and of the therapist obsessed with uncovering her motive...
+                                </p>
+                                <button class="read-more-btn" id="readMoreBtn">Read More</button>
+                            </div>
+                            
+                            <div class="book-details-list">
+                                <div class="detail-item">
+                                    <span class="detail-label">Format:</span>
+                                    <span class="detail-value" id="bookFormat">Paperback, eBook, Audiobook</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Pages:</span>
+                                    <span class="detail-value" id="bookPages">352 pages</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Publisher:</span>
+                                    <span class="detail-value" id="bookPublisher">Celadon Books</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Published:</span>
+                                    <span class="detail-value" id="bookPublished">February 5, 2019</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">ISBN:</span>
+                                    <span class="detail-value" id="bookISBN">978-1250301697</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Language:</span>
+                                    <span class="detail-value" id="bookLanguage">English</span>
+                                </div>
+                            </div>
+                            
+                            <div class="book-actions">
+                                <div class="quantity-selector">
+                                    <button class="qty-btn minus"><i class="fas fa-minus"></i></button>
+                                    <input type="number" class="qty-input" value="1" min="1" max="10" id="quantityInput">
+                                    <button class="qty-btn plus"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn" id="addToCartBtn">
+                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                </button>
+                                <button class="btn btn-outline add-to-wishlist-btn" id="addToWishlistBtn">
+                                    <i class="far fa-heart"></i> Add to Wishlist
+                                </button>
+                                <button class="btn btn-outline buy-now-btn" id="buyNowBtn">
+                                    <i class="fas fa-bolt"></i> Buy Now
+                                </button>
+                            </div>
+                            
+                            <div class="delivery-info">
+                                <div class="delivery-item">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <div>
+                                        <strong>Free Delivery</strong>
+                                        <p>On orders over $25</p>
+                                    </div>
+                                </div>
+                                <div class="delivery-item">
+                                    <i class="fas fa-undo-alt"></i>
+                                    <div>
+                                        <strong>30-Day Returns</strong>
+                                        <p>Hassle-free returns</p>
+                                    </div>
+                                </div>
+                                <div class="delivery-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <div>
+                                        <strong>Secure Payment</strong>
+                                        <p>100% secure & encrypted</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right: Book Sidebar -->
+                        <div class="book-details-right">
+                            <div class="book-sidebar">
+                                <div class="sidebar-section ratings-overview">
+                                    <h3>Customer Reviews</h3>
+                                    <div class="overall-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <span class="rating-number">4.5</span>
+                                        </div>
+                                        <p class="rating-total">4,289 ratings</p>
+                                    </div>
+                                    <div class="rating-bars">
+                                        <div class="rating-bar">
+                                            <span class="star-count">5 stars</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" style="width: 65%;"></div>
+                                            </div>
+                                            <span class="bar-percentage">65%</span>
+                                        </div>
+                                        <div class="rating-bar">
+                                            <span class="star-count">4 stars</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" style="width: 22%;"></div>
+                                            </div>
+                                            <span class="bar-percentage">22%</span>
+                                        </div>
+                                        <div class="rating-bar">
+                                            <span class="star-count">3 stars</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" style="width: 8%;"></div>
+                                            </div>
+                                            <span class="bar-percentage">8%</span>
+                                        </div>
+                                        <div class="rating-bar">
+                                            <span class="star-count">2 stars</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" style="width: 3%;"></div>
+                                            </div>
+                                            <span class="bar-percentage">3%</span>
+                                        </div>
+                                        <div class="rating-bar">
+                                            <span class="star-count">1 star</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" style="width: 2%;"></div>
+                                            </div>
+                                            <span class="bar-percentage">2%</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline write-review-btn">
+                                        <i class="fas fa-edit"></i> Write a Review
+                                    </button>
+                                </div>
+                                
+                                <div class="sidebar-section similar-books">
+                                    <h3>Similar Books</h3>
+                                    <div class="similar-book">
+                                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Similar Book">
+                                        <div class="similar-book-info">
+                                            <h4>The Guest List</h4>
+                                            <p class="similar-book-author">Lucy Foley</p>
+                                            <div class="similar-book-price">$14.99</div>
+                                        </div>
+                                    </div>
+                                    <div class="similar-book">
+                                        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Similar Book">
+                                        <div class="similar-book-info">
+                                            <h4>The Paris Apartment</h4>
+                                            <p class="similar-book-author">Lucy Foley</p>
+                                            <div class="similar-book-price">$16.99</div>
+                                        </div>
+                                    </div>
+                                    <div class="similar-book">
+                                        <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Similar Book">
+                                        <div class="similar-book-info">
+                                            <h4>Gone Girl</h4>
+                                            <p class="similar-book-author">Gillian Flynn</p>
+                                            <div class="similar-book-price">$13.99</div>
+                                        </div>
+                                    </div>
+                                    <a href="category.html?genre=thriller" class="view-more-link">
+                                        View More Similar Books <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                
+                                <div class="sidebar-section author-info">
+                                    <h3>About the Author</h3>
+                                    <div class="author-profile">
+                                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Author">
+                                        <div class="author-details">
+                                            <h4 id="authorName">Alex Michaelides</h4>
+                                            <p class="author-bio">
+                                                British-Cypriot author and screenwriter. The Silent Patient is his debut novel and was a Sunday Times and New York Times bestseller.
+                                            </p>
+                                            <a href="#" class="author-books-link">
+                                                View all books by this author
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Book Tabs Section -->
+            <section class="book-tabs-section">
+                <div class="container">
+                    <div class="book-tabs">
+                        <button class="tab-btn active" data-tab="description">Description</button>
+                        <button class="tab-btn" data-tab="details">Product Details</button>
+                        <button class="tab-btn" data-tab="reviews">Customer Reviews (4,289)</button>
+                        <button class="tab-btn" data-tab="faq">FAQ</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="descriptionTab">
+                        <div class="tab-content-inner">
+                            <h3>About This Book</h3>
+                            <p id="fullDescription">
+                                Alicia Berenson's life is seemingly perfect. A famous painter married to an in-demand fashion photographer, she lives in a grand house with big windows overlooking a park in one of London's most desirable areas. One evening her husband Gabriel returns home late from a fashion shoot, and Alicia shoots him five times in the face, and then never speaks another word.
+                                <br><br>
+                                Alicia's refusal to talk, or give any kind of explanation, turns a domestic tragedy into something far grander, a mystery that captures the public imagination and casts Alicia into notoriety. The price of her art skyrockets, and she, the silent patient, is hidden away from the tabloids and spotlight at the Grove, a secure forensic unit in North London.
+                                <br><br>
+                                Theo Faber is a criminal psychotherapist who has waited a long time for the opportunity to work with Alicia. His determination to get her to talk and unravel the mystery of why she shot her husband takes him down a twisting path into his own motivations—a search for the truth that threatens to consume him...
+                            </p>
+                            
+                            <div class="book-features">
+                                <h4>Key Features</h4>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> #1 New York Times Bestseller</li>
+                                    <li><i class="fas fa-check"></i> Goodreads Choice Award Winner</li>
+                                    <li><i class="fas fa-check"></i> Over 1 million copies sold worldwide</li>
+                                    <li><i class="fas fa-check"></i> Movie adaptation in development</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="detailsTab">
+                        <div class="tab-content-inner">
+                            <h3>Product Specifications</h3>
+                            <table class="specs-table">
+                                <tr>
+                                    <th>Publisher</th>
+                                    <td id="specPublisher">Celadon Books (February 5, 2019)</td>
+                                </tr>
+                                <tr>
+                                    <th>Language</th>
+                                    <td id="specLanguage">English</td>
+                                </tr>
+                                <tr>
+                                    <th>Paperback</th>
+                                    <td id="specPages">352 pages</td>
+                                </tr>
+                                <tr>
+                                    <th>ISBN-10</th>
+                                    <td id="specISBN10">1250301696</td>
+                                </tr>
+                                <tr>
+                                    <th>ISBN-13</th>
+                                    <td id="specISBN13">978-1250301697</td>
+                                </tr>
+                                <tr>
+                                    <th>Item Weight</th>
+                                    <td>1.1 pounds</td>
+                                </tr>
+                                <tr>
+                                    <th>Dimensions</th>
+                                    <td>5.5 x 1 x 8.25 inches</td>
+                                </tr>
+                                <tr>
+                                    <th>Best Sellers Rank</th>
+                                    <td>#1 in Psychological Thrillers</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="reviewsTab">
+                        <div class="tab-content-inner">
+                            <h3>Customer Reviews</h3>
+                            <div class="review-summary">
+                                <div class="review-stats">
+                                    <div class="average-rating">
+                                        <span class="rating-number">4.5</span>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <p>Based on 4,289 reviews</p>
+                                    </div>
+                                    <button class="btn btn-primary write-review-btn">
+                                        <i class="fas fa-edit"></i> Write a Review
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="reviews-list">
+                                <!-- Review items would be loaded here -->
+                                <div class="review-item">
+                                    <div class="review-header">
+                                        <div class="reviewer-info">
+                                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Reviewer">
+                                            <div>
+                                                <h4>Sarah Johnson</h4>
+                                                <div class="review-rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="review-date">June 15, 2023</span>
+                                    </div>
+                                    <div class="review-content">
+                                        <h5>Couldn't put it down!</h5>
+                                        <p>This book kept me on the edge of my seat from start to finish. The plot twists are incredible and the ending completely shocked me. Highly recommend!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="faqTab">
+                        <div class="tab-content-inner">
+                            <h3>Frequently Asked Questions</h3>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    Is this book available in other formats?
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Yes, this book is available in Hardcover, Paperback, eBook, and Audiobook formats. You can select your preferred format when adding to cart.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    What is the shipping time?
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Standard shipping takes 3-5 business days. Express shipping is available for delivery in 1-2 business days. International shipping times vary by location.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    Is this appropriate for book clubs?
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Absolutely! This book includes discussion questions at the end, making it perfect for book club discussions. Many book clubs have chosen this as their monthly read.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Recently Viewed Books -->
+            <section class="section recently-viewed">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">You May Also Like</h2>
+                        <p class="section-subtitle">Books similar to this one</p>
+                    </div>
+                    
+                    <div class="books-carousel">
+                        <div class="books-track">
+                            <!-- Similar books will be loaded here -->
+                        </div>
+                        <div class="section-controls">
+                            <button class="scroll-btn left-scroll">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="scroll-btn right-scroll">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <script>
+        // Load header and footer
+        async function loadComponents() {
+            try {
+                // Load header
+                const headerResponse = await fetch('../components/header.html');
+                const headerHTML = await headerResponse.text();
+                document.getElementById('header-container').innerHTML = headerHTML;
+                
+                // Load footer
+                const footerResponse = await fetch('../components/footer.html');
+                const footerHTML = await footerResponse.text();
+                document.getElementById('footer-container').innerHTML = footerHTML;
+                
+                // Initialize after components load
+                initializePage();
+                
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+        
+        function initializePage() {
+            // Get book ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const bookId = urlParams.get('id') || '1';
+            
+            // Load book data
+            loadBookData(bookId);
+            
+            // Initialize page functionality
+            initBookDetailsPage();
+            
+            // Hide loading screen
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                const mainContent = document.getElementById('main-content');
+                
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.visibility = 'hidden';
+                }
+                if (mainContent) {
+                    mainContent.classList.remove('hidden');
+                }
+            }, 1000);
+        }
+        
+        // Start loading components
+        document.addEventListener('DOMContentLoaded', loadComponents);
+
+        // Add this at the beginning of your book-details.js file
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        alert("📢 Page Under Development\n\n⚠️ Note: Data shown may be incomplete or incorrect.\nThis is a frontend demo only.");
+    }, 1000);
+});
+    </script>
+    
+    <script src="../js/book-details.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

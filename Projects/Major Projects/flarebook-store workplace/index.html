@@ -10,75 +10,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="loading-content">
-            <div class="logo-container">
-                <div class="square-logo-placeholder">
-                    <img src="assets/images/logo/square_logo.png" alt="FlareBook Logo">
-                </div>
-            </div>
-            <p class="loading-text">Igniting Your Reading Journey...</p>
-        </div>
-    </div>
-
     <!-- Main Content -->
     <div id="main-content" class="main-content hidden">
-        <!-- Sticky Header -->
-        <header class="main-header">
-            <!-- Top Row (Hides on scroll down) -->
-            <div class="header-top" id="headerTop">
-                <div class="header-section">
-                    <!-- Left: Logo -->
-                    <div class="header-logo">
-                        <img src="assets/images/logo/rectangle_logo.png" alt="FlareBook Store" class="header-logo-img">
-                    </div>
-                    
-                    <!-- Center: Navigation -->
-                    <nav class="header-nav">
-                        <a href="index.html" class="nav-link active">Home</a>
-                        <a href="assets/pages/category.html" class="nav-link">Category</a>
-                        <a href="assets/pages/about.html" class="nav-link">About</a>
-                    </nav>
-                    
-                    <!-- Right: Login Button -->
-                    <div class="header-actions">
-                        <a href="/login.html" class="login-btn" id="headerLoginBtn">
-                            <i class="fas fa-user"></i> Login
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Bottom Row (Sticky - Always visible) -->
-            <div class="header-bottom" id="headerBottom">
-                <div class="header-section">
-                    <!-- Search Bar -->
-                    <div class="search-container">
-                        <div class="search-box">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" class="search-input" id="searchInput" 
-                                   placeholder="Search books, authors, categories..."
-                                   autocomplete="off">
-                            <button class="search-btn">Search</button>
-                        </div>
-                        <div class="autocomplete-dropdown" id="autocompleteDropdown"></div>
-                    </div>
-                    
-                    <!-- Right: Favorites & Cart -->
-                    <div class="header-icons">
-                        <button class="icon-btn" id="favoritesBtn">
-                            <i class="far fa-heart"></i>
-                            <span class="icon-badge">0</span>
-                        </button>
-                        <button class="icon-btn" id="cartBtn">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="icon-badge">0</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </header>
+
+        <!-- Load Header Dynamically -->
+        <div id="header-container"></div>
 
 <!-- Main Content Area -->
 <main class="main-content-area">
@@ -90,6 +26,7 @@
                 <div class="slide active">
                     <div class="slide-content">
                         <div class="slide-text">
+                        <a href="assets/pages/category.html" class="book-card-link">
                             <h1 class="slide-title">Ignite Your Imagination</h1>
                             <p class="slide-description">Discover books that will transport you to new worlds and expand your horizons.</p>
                             <button class="btn btn-primary slide-btn">Explore New Releases</button>
@@ -98,12 +35,14 @@
                             <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Collection">
                         </div>
                     </div>
+                    </a>
                 </div>
                 
                 <!-- Slide 2 -->
                 <div class="slide">
                     <div class="slide-content">
                         <div class="slide-text">
+                        <a href="assets/pages/category.html" class="book-card-link">
                             <h1 class="slide-title">Summer Reading Sale</h1>
                             <p class="slide-description">Get up to 50% off on bestselling titles. Limited time offer!</p>
                             <button class="btn btn-primary slide-btn">Shop the Sale</button>
@@ -112,12 +51,14 @@
                             <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Summer Sale">
                         </div>
                     </div>
+                    </a>
                 </div>
                 
                 <!-- Slide 3 (New) -->
                 <div class="slide">
                     <div class="slide-content">
                         <div class="slide-text">
+                        <a href="assets/pages/category.html" class="book-card-link">
                             <h1 class="slide-title">Book of the Month</h1>
                             <p class="slide-description">"The Midnight Library" by Matt Haig - Our top pick for June with special discounts!</p>
                             <button class="btn btn-primary slide-btn">Learn More</button>
@@ -127,6 +68,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
             
             <div class="slider-controls">
@@ -773,15 +715,75 @@
 <div id="footer-container"></div>
 
 <script>
-    // Load footer dynamically
-    fetch('assets/components/footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-container').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading footer:', error));
+    // Function to load components
+    async function loadComponents() {
+        try {
+            // Load header
+            const headerResponse = await fetch('assets/components/header.html');
+            const headerHTML = await headerResponse.text();
+            document.getElementById('header-container').innerHTML = headerHTML;
+            
+            // Load footer
+            const footerResponse = await fetch('assets/components/footer.html');
+            const footerHTML = await footerResponse.text();
+            document.getElementById('footer-container').innerHTML = footerHTML;
+            
+            // Wait a bit for DOM to settle
+            await new Promise(resolve => setTimeout(resolve, 50));
+            
+            // Initialize all functionality
+            initializeAfterHeaderLoad();
+            
+        } catch (error) {
+            console.error('Error loading components:', error);
+        }
+    }
+    
+    function initializeAfterHeaderLoad() {
+        // Initialize navigation manager
+        window.navigationManager = new NavigationManager();
+        
+        // Initialize FlareBook app if needed
+        if (typeof FlareBookStore !== 'undefined') {
+            window.flareBookApp = new FlareBookStore();
+        }
+        
+        // Initialize typewriter if available
+        if (typeof TypewriterSearch !== 'undefined') {
+            window.typewriterSearch = new TypewriterSearch();
+            window.typewriterSearch.init();
+        }
+        
+        // Initialize home page if on home
+        const isHomePage = document.querySelector('.hero-slider-section') !== null;
+        if (isHomePage && typeof HomePage !== 'undefined') {
+            window.homePage = new HomePage();
+        }
+        
+        // Show main content
+        const loadingScreen = document.getElementById('loading-screen');
+        const mainContent = document.getElementById('main-content');
+        
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.visibility = 'hidden';
+            
+            setTimeout(() => {
+                if (loadingScreen.parentNode) {
+                    loadingScreen.remove();
+                }
+                if (mainContent) {
+                    mainContent.classList.remove('hidden');
+                }
+            }, 500);
+        }
+    }
+    
+    // Start loading components
+    document.addEventListener('DOMContentLoaded', loadComponents);
 </script>
     <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/typewriter.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/home.js"></script>
 </body>

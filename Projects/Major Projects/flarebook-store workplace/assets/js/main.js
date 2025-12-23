@@ -668,6 +668,27 @@ scrollToTopWithVariableSpeed() {
     
     requestAnimationFrame(animateScroll);
 }
+// ===== HEADER INITIALIZATION =====
+initHeader() {
+    // Re-bind events for dynamically loaded header
+    this.bindEvents();
+    
+    // Update counts
+    this.updateCartCount();
+    this.updateWishlistCount();
+    this.updateUserUI();
+    
+    // Setup scroll effect
+    this.setupHeaderScroll();
+    
+    // Initialize typewriter if available
+    if (typeof TypewriterSearch !== 'undefined') {
+        setTimeout(() => {
+            const typewriter = new TypewriterSearch();
+            typewriter.init();
+        }, 500);
+    }
+}
 }
 
 // Initialize the application IMMEDIATELY when DOM is ready

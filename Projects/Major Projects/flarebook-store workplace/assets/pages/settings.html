@@ -175,6 +175,7 @@
     </div>
 
     <script src="../js/main.js"></script>
+    <script src="../js/typewriter.js"></script>
     <script>
         function showPasswordModal() {
             document.getElementById('passwordModal').style.display = 'flex';
@@ -195,6 +196,11 @@
                     }
                 });
         });
+        window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        alert("📢 Page Under Development\n\n⚠️ Note: Data shown may be incomplete or incorrect.\nThis is a frontend demo only.");
+    }, 1000);
+});
     </script>
 </body>
 </html>

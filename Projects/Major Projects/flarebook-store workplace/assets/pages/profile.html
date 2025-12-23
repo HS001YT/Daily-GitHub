@@ -23,9 +23,9 @@
                 <!-- Left Sidebar -->
                 <div class="profile-sidebar">
                     <div class="user-summary">
-                        <div class="profile-avatar">JD</div>
-                        <h3>John Doe</h3>
-                        <p class="user-email">john@example.com</p>
+                        <div class="profile-avatar">H</div>
+                        <h3>Harshit Singla</h3>
+                        <p class="user-email">ok@tata.bye</p>
                         <div class="user-type-badge">Personal Account</div>
                     </div>
                     
@@ -54,15 +54,15 @@
                         <h2><i class="fas fa-user"></i> Personal Information</h2>
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" value="John Doe" class="form-input">
+                            <input type="text" value="Harshit Singla" class="form-input">
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input type="email" value="john@example.com" class="form-input">
+                            <input type="email" value="ok@tata.bye" class="form-input">
                         </div>
                         <div class="form-group">
                             <label>Phone Number</label>
-                            <input type="tel" value="+1 234 567 8900" class="form-input">
+                            <input type="tel" value="+91 99999 XXXXX" class="form-input">
                         </div>
                         <button class="submit-btn">Update Profile</button>
                     </div>
@@ -71,9 +71,7 @@
                         <h2><i class="fas fa-map-marker-alt"></i> Shipping Address</h2>
                         <div class="address-card">
                             <h4>Primary Address</h4>
-                            <p>123 Main Street</p>
-                            <p>New York, NY 10001</p>
-                            <p>United States</p>
+                            <p>Not Set</p>
                             <button class="small-btn">Edit</button>
                         </div>
                     </div>
@@ -103,6 +101,7 @@
     </main>
 
     <script src="../js/main.js"></script>
+    <script src="../js/typewriter.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             fetch('../../assets/components/full-header.html')
@@ -115,6 +114,11 @@
                     }
                 });
         });
+        window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        alert("📢 Page Under Development\n\n⚠️ Note: Data shown may be incomplete or incorrect.\nThis is a frontend demo only.");
+    }, 1000);
+});
     </script>
 </body>
 </html>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlareBook Store - Ignite Your Mind</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
+</head>
+<body>
+    <!-- Main Content -->
+    <div id="main-content" class="main-content hidden">
+
+        <!-- Load Header Dynamically -->
+        <div id="header-container"></div>
+
+<!-- Main Content Area -->
+<main class="main-content-area">
+    <!-- Hero Slider -->
+    <section class="hero-slider-section">
+        <div class="slider-container">
+            <div class="slider-track">
+                <!-- Slide 1 -->
+                <div class="slide active">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                        <a href="assets/pages/category.html" class="book-card-link">
+                            <h1 class="slide-title">Ignite Your Imagination</h1>
+                            <p class="slide-description">Discover books that will transport you to new worlds and expand your horizons.</p>
+                            <button class="btn btn-primary slide-btn">Explore New Releases</button>
+                        </div>
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Collection">
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                        <a href="assets/pages/category.html" class="book-card-link">
+                            <h1 class="slide-title">Summer Reading Sale</h1>
+                            <p class="slide-description">Get up to 50% off on bestselling titles. Limited time offer!</p>
+                            <button class="btn btn-primary slide-btn">Shop the Sale</button>
+                        </div>
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Summer Sale">
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <!-- Slide 3 (New) -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                        <a href="assets/pages/category.html" class="book-card-link">
+                            <h1 class="slide-title">Book of the Month</h1>
+                            <p class="slide-description">"The Midnight Library" by Matt Haig - Our top pick for June with special discounts!</p>
+                            <button class="btn btn-primary slide-btn">Learn More</button>
+                        </div>
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book of the Month">
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+            
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+                <button class="slider-btn next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Books Section -->
+    <section class="section featured-books">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Popular Books</h2>
+                <p class="section-subtitle">Best sellers loved by our readers</p>
+                <div class="section-controls">
+                    <button class="scroll-btn left-scroll">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="scroll-btn right-scroll">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="books-carousel">
+                <div class="books-track">
+                    <!-- Book 1 -->
+                    <a href="#" class="book-card-link">
+                        <div class="book-card">
+                            <div class="book-image">
+                                <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Cover">
+                                <div class="book-overlay">
+                                    <div class="overlay-buttons">
+                                        <button class="overlay-btn cart-btn" data-book-id="1">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <span class="tooltip">Add to Cart</span>
+                                        </button>
+                                        <button class="overlay-btn wishlist-btn" data-book-id="1">
+                                            <i class="far fa-heart"></i>
+                                            <span class="tooltip">Add to Wishlist</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <span class="book-badge bestseller">Bestseller</span>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">The Silent Patient</h3>
+                                <p class="book-author">Alex Michaelides</p>
+                                <div class="book-price">
+                                    <span class="current-price">$15.99</span>
+                                    <span class="original-price">$24.99</span>
+                                    <span class="discount">-35%</span>
+                                </div>
+                                <div class="book-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="rating-count">(4,289)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Book 2 -->
+                    <a href="#" class="book-card-link">
+                        <div class="book-card">
+                            <div class="book-image">
+                                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Cover">
+                                <div class="book-overlay">
+                                    <div class="overlay-buttons">
+                                        <button class="overlay-btn cart-btn" data-book-id="2">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <span class="tooltip">Add to Cart</span>
+                                        </button>
+                                        <button class="overlay-btn wishlist-btn" data-book-id="2">
+                                            <i class="far fa-heart"></i>
+                                            <span class="tooltip">Add to Wishlist</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <span class="book-badge new">New</span>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">Atomic Habits</h3>
+                                <p class="book-author">James Clear</p>
+                                <div class="book-price">
+                                    <span class="current-price">$18.99</span>
+                                </div>
+                                <div class="book-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-count">(12,450)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Book 3 -->
+                    <a href="#" class="book-card-link">
+                        <div class="book-card">
+                            <div class="book-image">
+                                <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Cover">
+                                <div class="book-overlay">
+                                    <div class="overlay-buttons">
+                                        <button class="overlay-btn cart-btn" data-book-id="3">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <span class="tooltip">Add to Cart</span>
+                                        </button>
+                                        <button class="overlay-btn wishlist-btn" data-book-id="3">
+                                            <i class="far fa-heart"></i>
+                                            <span class="tooltip">Add to Wishlist</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">The Midnight Library</h3>
+                                <p class="book-author">Matt Haig</p>
+                                <div class="book-price">
+                                    <span class="current-price">$16.49</span>
+                                    <span class="original-price">$22.99</span>
+                                    <span class="discount">-28%</span>
+                                </div>
+                                <div class="book-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="rating-count">(8,742)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Book 4 -->
+                    <a href="#" class="book-card-link">
+                        <div class="book-card">
+                            <div class="book-image">
+                                <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Cover">
+                                <div class="book-overlay">
+                                    <div class="overlay-buttons">
+                                        <button class="overlay-btn cart-btn" data-book-id="4">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <span class="tooltip">Add to Cart</span>
+                                        </button>
+                                        <button class="overlay-btn wishlist-btn" data-book-id="4">
+                                            <i class="far fa-heart"></i>
+                                            <span class="tooltip">Add to Wishlist</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">Project Hail Mary</h3>
+                                <p class="book-author">Andy Weir</p>
+                                <div class="book-price">
+                                    <span class="current-price">$14.99</span>
+                                </div>
+                                <div class="book-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="rating-count">(9,331)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Book 5 -->
+                    <a href="#" class="book-card-link">
+                        <div class="book-card">
+                            <div class="book-image">
+                                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Cover">
+                                <div class="book-overlay">
+                                    <div class="overlay-buttons">
+                                        <button class="overlay-btn cart-btn" data-book-id="5">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <span class="tooltip">Add to Cart</span>
+                                        </button>
+                                        <button class="overlay-btn wishlist-btn" data-book-id="5">
+                                            <i class="far fa-heart"></i>
+                                            <span class="tooltip">Add to Wishlist</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <span class="book-badge sale">Sale</span>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">The Four Winds</h3>
+                                <p class="book-author">Kristin Hannah</p>
+                                <div class="book-price">
+                                    <span class="current-price">$13.99</span>
+                                    <span class="original-price">$26.99</span>
+                                    <span class="discount">-48%</span>
+                                </div>
+                                <div class="book-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="rating-count">(6,892)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Book 6 -->
+                    <a href="#" class="book-card-link">
+                        <div class="book-card">
+                            <div class="book-image">
+                                <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Cover">
+                                <div class="book-overlay">
+                                    <div class="overlay-buttons">
+                                        <button class="overlay-btn cart-btn" data-book-id="6">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <span class="tooltip">Add to Cart</span>
+                                        </button>
+                                        <button class="overlay-btn wishlist-btn" data-book-id="6">
+                                            <i class="far fa-heart"></i>
+                                            <span class="tooltip">Add to Wishlist</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">Klara and the Sun</h3>
+                                <p class="book-author">Kazuo Ishiguro</p>
+                                <div class="book-price">
+                                    <span class="current-price">$17.49</span>
+                                </div>
+                                <div class="book-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="rating-count">(5,621)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books on Sale Section -->
+    <section class="section sale-books">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Books on Sale</h2>
+                <p class="section-subtitle">Limited time offers - Don't miss out!</p>
+                <a href="assets/pages/category.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="sale-grid">
+                <!-- Sale Book 1 -->
+                <a href="#" class="sale-book-card-link">
+                    <div class="sale-book-card">
+                        <div class="sale-book-image">
+                            <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Cover">
+                            <div class="sale-overlay">
+                                <div class="sale-overlay-buttons">
+                                    <button class="overlay-btn cart-btn" data-book-id="sale1">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <span class="tooltip">Add to Cart</span>
+                                    </button>
+                                    <button class="overlay-btn wishlist-btn" data-book-id="sale1">
+                                        <i class="far fa-heart"></i>
+                                        <span class="tooltip">Add to Wishlist</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="sale-badge">50% OFF</div>
+                        </div>
+                        <div class="sale-book-info">
+                            <h3 class="sale-book-title">The Invisible Life</h3>
+                            <p class="sale-book-author">Addie LaRue</p>
+                            <div class="sale-price">
+                                <span class="sale-current">$12.49</span>
+                                <span class="sale-original">$24.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Sale Book 2 -->
+                <a href="#" class="sale-book-card-link">
+                    <div class="sale-book-card">
+                        <div class="sale-book-image">
+                            <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Cover">
+                            <div class="sale-overlay">
+                                <div class="sale-overlay-buttons">
+                                    <button class="overlay-btn cart-btn" data-book-id="sale2">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <span class="tooltip">Add to Cart</span>
+                                    </button>
+                                    <button class="overlay-btn wishlist-btn" data-book-id="sale2">
+                                        <i class="far fa-heart"></i>
+                                        <span class="tooltip">Add to Wishlist</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="sale-badge">40% OFF</div>
+                        </div>
+                        <div class="sale-book-info">
+                            <h3 class="sale-book-title">The Seven Husbands</h3>
+                            <p class="sale-book-author">Evelyn Hugo</p>
+                            <div class="sale-price">
+                                <span class="sale-current">$11.99</span>
+                                <span class="sale-original">$19.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Sale Book 3 -->
+                <a href="#" class="sale-book-card-link">
+                    <div class="sale-book-card">
+                        <div class="sale-book-image">
+                            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Cover">
+                            <div class="sale-overlay">
+                                <div class="sale-overlay-buttons">
+                                    <button class="overlay-btn cart-btn" data-book-id="sale3">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <span class="tooltip">Add to Cart</span>
+                                    </button>
+                                    <button class="overlay-btn wishlist-btn" data-book-id="sale3">
+                                        <i class="far fa-heart"></i>
+                                        <span class="tooltip">Add to Wishlist</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="sale-badge">35% OFF</div>
+                        </div>
+                        <div class="sale-book-info">
+                            <h3 class="sale-book-title">Malibu Rising</h3>
+                            <p class="sale-book-author">Taylor Jenkins Reid</p>
+                            <div class="sale-price">
+                                <span class="sale-current">$14.99</span>
+                                <span class="sale-original">$22.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Sale Book 4 -->
+                <a href="#" class="sale-book-card-link">
+                    <div class="sale-book-card">
+                        <div class="sale-book-image">
+                            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Book Cover">
+                            <div class="sale-overlay">
+                                <div class="sale-overlay-buttons">
+                                    <button class="overlay-btn cart-btn" data-book-id="sale4">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <span class="tooltip">Add to Cart</span>
+                                    </button>
+                                    <button class="overlay-btn wishlist-btn" data-book-id="sale4">
+                                        <i class="far fa-heart"></i>
+                                        <span class="tooltip">Add to Wishlist</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="sale-badge">60% OFF</div>
+                        </div>
+                        <div class="sale-book-info">
+                            <h3 class="sale-book-title">The Last Thing</h3>
+                            <p class="sale-book-author">He Told Me</p>
+                            <div class="sale-price">
+                                <span class="sale-current">$9.99</span>
+                                <span class="sale-original">$24.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy One Get One Free Banner -->
+    <section class="bogo-banner">
+        <div class="container">
+            <div class="bogo-content">
+                <div class="bogo-text">
+                    <h2 class="bogo-title">Buy One Get One Free!</h2>
+                    <p class="bogo-description">On selected fiction titles. Limited time offer.</p>
+                    <button class="btn btn-primary bogo-btn">Shop Now</button>
+                </div>
+                <div class="bogo-image">
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="BOGO Offer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Books Section -->
+    <section class="section upcoming-books">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Upcoming Releases</h2>
+            <p class="section-subtitle">Get ready for these exciting new books</p>
+        </div>
+        
+        <div class="upcoming-grid">
+            <!-- Upcoming Book 1 -->
+            <div class="upcoming-book-card" data-book-id="upcoming1">
+                <a href="#" class="upcoming-book-card-link">
+                    <div class="upcoming-date">
+                        <span class="date-day">25</span>
+                        <span class="date-month">JUN</span>
+                    </div>
+                    <div class="upcoming-book-image">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Upcoming Book">
+                    </div>
+                    <div class="upcoming-book-info">
+                        <h3 class="upcoming-book-title">The Maid</h3>
+                        <p class="upcoming-book-author">Nita Prose</p>
+                        <p class="upcoming-book-desc">A thrilling mystery about a hotel maid who discovers a dead body.</p>
+                        <div class="preorder-info">
+                            <button class="btn btn-outline preorder-btn" data-book-id="upcoming1">Pre-order Now</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Upcoming Book 2 -->
+            <div class="upcoming-book-card" data-book-id="upcoming2">
+                <a href="#" class="upcoming-book-card-link">
+                    <div class="upcoming-date">
+                        <span class="date-day">02</span>
+                        <span class="date-month">JUL</span>
+                    </div>
+                    <div class="upcoming-book-image">
+                        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Upcoming Book">
+                    </div>
+                    <div class="upcoming-book-info">
+                        <h3 class="upcoming-book-title">To Paradise</h3>
+                        <p class="upcoming-book-author">Hanya Yanagihara</p>
+                        <p class="upcoming-book-desc">A novel spanning three centuries about love, family, and the American experiment.</p>
+                        <div class="preorder-info">
+                            <button class="btn btn-outline preorder-btn" data-book-id="upcoming2">Pre-order Now</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Upcoming Book 3 -->
+            <div class="upcoming-book-card" data-book-id="upcoming3">
+                <a href="#" class="upcoming-book-card-link">
+                    <div class="upcoming-date">
+                        <span class="date-day">15</span>
+                        <span class="date-month">JUL</span>
+                    </div>
+                    <div class="upcoming-book-image">
+                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Upcoming Book">
+                    </div>
+                    <div class="upcoming-book-info">
+                        <h3 class="upcoming-book-title">Sea of Tranquility</h3>
+                        <p class="upcoming-book-author">Emily St. John Mandel</p>
+                        <p class="upcoming-book-desc">A novel of art, time travel, and love that tells the story of humanity across centuries.</p>
+                        <div class="preorder-info">
+                            <button class="btn btn-outline preorder-btn" data-book-id="upcoming3">Pre-order Now</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Free Books Section -->
+    <section class="section free-books">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Free Books</h2>
+                <p class="section-subtitle">Classics and more - completely free!</p>
+            </div>
+            
+            <div class="free-books-grid">
+                <!-- Free Book 1 -->
+                <a href="#" class="free-book-card-link">
+                    <div class="free-book-card">
+                        <div class="free-book-image">
+                            <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Free Book">
+                            <div class="free-badge">FREE</div>
+                        </div>
+                        <div class="free-book-info">
+                            <h3 class="free-book-title">Pride and Prejudice</h3>
+                            <p class="free-book-author">Jane Austen</p>
+                            <div class="free-book-actions">
+                                <button class="btn btn-free">Download Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Free Book 2 -->
+                <a href="#" class="free-book-card-link">
+                    <div class="free-book-card">
+                        <div class="free-book-image">
+                            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Free Book">
+                            <div class="free-badge">FREE</div>
+                        </div>
+                        <div class="free-book-info">
+                            <h3 class="free-book-title">Moby Dick</h3>
+                            <p class="free-book-author">Herman Melville</p>
+                            <div class="free-book-actions">
+                                <button class="btn btn-free">Download Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Free Book 3 -->
+                <a href="#" class="free-book-card-link">
+                    <div class="free-book-card">
+                        <div class="free-book-image">
+                            <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Free Book">
+                            <div class="free-badge">FREE</div>
+                        </div>
+                        <div class="free-book-info">
+                            <h3 class="free-book-title">Frankenstein</h3>
+                            <p class="free-book-author">Mary Shelley</p>
+                            <div class="free-book-actions">
+                                <button class="btn btn-free">Download Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Free Book 4 -->
+                <a href="#" class="free-book-card-link">
+                    <div class="free-book-card">
+                        <div class="free-book-image">
+                            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Free Book">
+                            <div class="free-badge">FREE</div>
+                        </div>
+                        <div class="free-book-info">
+                            <h3 class="free-book-title">The Adventures of Sherlock Holmes</h3>
+                            <p class="free-book-author">Arthur Conan Doyle</p>
+                            <div class="free-book-actions">
+                                <button class="btn btn-free">Download Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Authors Section -->
+    <section class="section popular-authors">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Popular Authors</h2>
+                <p class="section-subtitle">Discover works from bestselling authors</p>
+            </div>
+            
+            <div class="authors-grid">
+                <!-- Author 1 -->
+                <a href="#" class="author-card-link">
+                    <div class="author-card">
+                        <div class="author-image">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Author">
+                        </div>
+                        <div class="author-info">
+                            <h3 class="author-name">Stephen King</h3>
+                            <p class="author-genre">Horror, Suspense</p>
+                            <p class="author-books">65+ published books</p>
+                            <div class="author-link">View Books <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Author 2 -->
+                <a href="#" class="author-card-link">
+                    <div class="author-card">
+                        <div class="author-image">
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Author">
+                        </div>
+                        <div class="author-info">
+                            <h3 class="author-name">J.K. Rowling</h3>
+                            <p class="author-genre">Fantasy, Fiction</p>
+                            <p class="author-books">Harry Potter series</p>
+                            <div class="author-link">View Books <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Author 3 -->
+                <a href="#" class="author-card-link">
+                    <div class="author-card">
+                        <div class="author-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Author">
+                        </div>
+                        <div class="author-info">
+                            <h3 class="author-name">James Patterson</h3>
+                            <p class="author-genre">Mystery, Thriller</p>
+                            <p class="author-books">200+ million copies sold</p>
+                            <div class="author-link">View Books <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Author 4 -->
+                <a href="#" class="author-card-link">
+                    <div class="author-card">
+                        <div class="author-image">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Author">
+                        </div>
+                        <div class="author-info">
+                            <h3 class="author-name">Agatha Christie</h3>
+                            <p class="author-genre">Mystery, Crime</p>
+                            <p class="author-books">Best-selling novelist</p>
+                            <div class="author-link">View Books <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+</div>
+<!-- Include Footer -->
+<div id="footer-container"></div>
+
+<script>
+    // Function to load components
+    async function loadComponents() {
+        try {
+            // Load header
+            const headerResponse = await fetch('assets/components/header.html');
+            const headerHTML = await headerResponse.text();
+            document.getElementById('header-container').innerHTML = headerHTML;
+            
+            // Load footer
+            const footerResponse = await fetch('assets/components/footer.html');
+            const footerHTML = await footerResponse.text();
+            document.getElementById('footer-container').innerHTML = footerHTML;
+            
+            // Wait a bit for DOM to settle
+            await new Promise(resolve => setTimeout(resolve, 50));
+            
+            // Initialize all functionality
+            initializeAfterHeaderLoad();
+            
+        } catch (error) {
+            console.error('Error loading components:', error);
+        }
+    }
+    
+    function initializeAfterHeaderLoad() {
+        // Initialize navigation manager
+        window.navigationManager = new NavigationManager();
+        
+        // Initialize FlareBook app if needed
+        if (typeof FlareBookStore !== 'undefined') {
+            window.flareBookApp = new FlareBookStore();
+        }
+        
+        // Initialize typewriter if available
+        if (typeof TypewriterSearch !== 'undefined') {
+            window.typewriterSearch = new TypewriterSearch();
+            window.typewriterSearch.init();
+        }
+        
+        // Initialize home page if on home
+        const isHomePage = document.querySelector('.hero-slider-section') !== null;
+        if (isHomePage && typeof HomePage !== 'undefined') {
+            window.homePage = new HomePage();
+        }
+        
+        // Show main content
+        const loadingScreen = document.getElementById('loading-screen');
+        const mainContent = document.getElementById('main-content');
+        
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.visibility = 'hidden';
+            
+            setTimeout(() => {
+                if (loadingScreen.parentNode) {
+                    loadingScreen.remove();
+                }
+                if (mainContent) {
+                    mainContent.classList.remove('hidden');
+                }
+            }, 500);
+        }
+    }
+    
+    // Start loading components
+    document.addEventListener('DOMContentLoaded', loadComponents);
+</script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/typewriter.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/home.js"></script>
+</body>
+</html>

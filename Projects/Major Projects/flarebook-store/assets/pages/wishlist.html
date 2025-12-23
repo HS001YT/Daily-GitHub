@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - FlareBook Store</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/icons/favicon.png">
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <main class="wishlist-page main-content-area">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">My Wishlist</h1>
+                <p class="page-subtitle">Save books you want to read later</p>
+            </div>
+
+            <div class="wishlist-container">
+                <!-- Wishlist Stats -->
+                <div class="wishlist-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-heart"></i>
+                        <div>
+                            <h3>12</h3>
+                            <p>Books in Wishlist</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-tag"></i>
+                        <div>
+                            <h3>$156</h3>
+                            <p>Total Value</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div>
+                            <h3>3</h3>
+                            <p>In Cart</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wishlist Actions -->
+                <div class="wishlist-actions">
+                    <button class="action-btn">
+                        <i class="fas fa-shopping-cart"></i> Add All to Cart
+                    </button>
+                    <button class="action-btn secondary">
+                        <i class="fas fa-trash"></i> Clear Wishlist
+                    </button>
+                </div>
+
+                <!-- Wishlist Items -->
+                <div class="wishlist-items">
+                    <!-- Book 1 -->
+                    <div class="wishlist-item">
+                        <div class="item-check">
+                            <input type="checkbox">
+                        </div>
+                        <img src="https://via.placeholder.com/100x120" alt="Book" class="book-image">
+                        <div class="item-info">
+                            <h3>The Hobbit</h3>
+                            <p class="author">J.R.R. Tolkien</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="rating-text">4.2/5</span>
+                            </div>
+                            <p class="description">Bilbo Baggins embarks on an unexpected adventure...</p>
+                        </div>
+                        <div class="item-price">
+                            <strong>$14.99</strong>
+                            <small class="original-price">$19.99</small>
+                            <span class="discount">25% OFF</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="cart-btn">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <button class="remove-btn">
+                                <i class="far fa-trash-alt"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Book 2 -->
+                    <div class="wishlist-item">
+                        <div class="item-check">
+                            <input type="checkbox" checked>
+                        </div>
+                        <img src="https://via.placeholder.com/100x120" alt="Book" class="book-image">
+                        <div class="item-info">
+                            <h3>The Catcher in the Rye</h3>
+                            <p class="author">J.D. Salinger</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                                <span class="rating-text">3.8/5</span>
+                            </div>
+                            <p class="description">Holden Caulfield's coming-of-age story...</p>
+                        </div>
+                        <div class="item-price">
+                            <strong>$11.99</strong>
+                        </div>
+                        <div class="item-actions">
+                            <button class="cart-btn in-cart">
+                                <i class="fas fa-check"></i> In Cart
+                            </button>
+                            <button class="remove-btn">
+                                <i class="far fa-trash-alt"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Book 3 -->
+                    <div class="wishlist-item">
+                        <div class="item-check">
+                            <input type="checkbox">
+                        </div>
+                        <img src="https://via.placeholder.com/100x120" alt="Book" class="book-image">
+                        <div class="item-info">
+                            <h3>Dune</h3>
+                            <p class="author">Frank Herbert</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="rating-text">4.7/5</span>
+                            </div>
+                            <p class="description">Epic science fiction set in the distant future...</p>
+                        </div>
+                        <div class="item-price">
+                            <strong>$18.99</strong>
+                            <small class="original-price">$24.99</small>
+                            <span class="discount">24% OFF</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="cart-btn">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <button class="remove-btn">
+                                <i class="far fa-trash-alt"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-wishlist" style="display: none;">
+                    <div class="empty-icon">
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <h3>Your Wishlist is Empty</h3>
+                    <p>Save books you love by clicking the heart icon</p>
+                    <a href="../index.html" class="submit-btn">Browse Books</a>
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="recommendations">
+                <h3>Based on Your Wishlist</h3>
+                <div class="books-slider">
+                    <div class="book-card">
+                        <img src="https://via.placeholder.com/120x150" alt="Book">
+                        <h4>Foundation</h4>
+                        <p class="author">Isaac Asimov</p>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i> Add to Wishlist
+                        </button>
+                    </div>
+                    <!-- More recommendations -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/typewriter.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../../assets/components/full-header.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('header-container').innerHTML = html;
+                    if (window.flareBookApp) {
+                        window.flareBookApp.updateUserUI();
+                        window.flareBookApp.bindEvents();
+                    }
+                });
+        });
+        window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        alert("📢 Page Under Development\n\n⚠️ Note: Data shown may be incomplete or incorrect.\nThis is a frontend demo only.");
+    }, 1000);
+});
+    </script>
+</body>
+</html>

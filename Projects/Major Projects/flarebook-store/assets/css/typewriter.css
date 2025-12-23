@@ -1,0 +1,52 @@
+/* ===== TYPEWRITER EFFECT ===== */
+.typewriter-placeholder {
+    position: absolute;
+    left: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-family: inherit;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: calc(100% - 100px);
+    text-overflow: ellipsis;
+}
+
+.typewriter-placeholder.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.typewriter-placeholder::after {
+    content: '|';
+    display: inline-block;
+    animation: blink 1s infinite;
+    margin-left: 2px;
+    color: var(--flare-primary);
+}
+
+.search-input {
+    background: transparent !important;
+    position: relative;
+    z-index: 2;
+}
+
+.search-input:focus {
+    background: var(--flare-card-bg) !important;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Remove default placeholder on focus */
+.search-input:focus::placeholder {
+    color: transparent;
+}

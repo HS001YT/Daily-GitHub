@@ -10,10 +10,10 @@
             
             <!-- Center: Navigation -->
             <nav class="header-nav">
-                <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../pages/category.html" class="nav-link active">Category</a>
-                <a href="../pages/about.html" class="nav-link">About</a>
-            </nav>
+    <a href="#" class="nav-link" data-page="home">Home</a>
+    <a href="#" class="nav-link" data-page="category">Category</a>
+    <a href="#" class="nav-link" data-page="about">About</a>
+</nav>
             
             <!-- Right: Login Button -->
             <div class="header-actions">
@@ -41,15 +41,20 @@
             
             <!-- Right: Favorites & Cart -->
             <div class="header-icons">
-                <button class="icon-btn" id="favoritesBtn">
+                <a href="../../assets/pages/wishlist.html" class="icon-btn" id="favoritesBtn">
                     <i class="far fa-heart"></i>
                     <span class="icon-badge">0</span>
-                </button>
-                <button class="icon-btn" id="cartBtn">
+                </a>
+                <a href="../../assets/pages/cart.html" class="icon-btn" id="cartBtn">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="icon-badge">0</span>
-                </button>
+                </a>
             </div>
         </div>
     </div>
 </header>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-to-top" id="scrollToTopBtn" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+</button>

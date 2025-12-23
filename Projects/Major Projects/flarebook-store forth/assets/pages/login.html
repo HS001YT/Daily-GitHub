@@ -260,6 +260,26 @@
             }
         }
         
+function toggleRequiredFields(type) {
+    // Disable all required fields first
+    document.querySelectorAll('.form-input').forEach(input => {
+        input.removeAttribute('required');
+    });
+
+    if (type === 'personal') {
+        document
+            .querySelectorAll('#personal-form .form-input')
+            .forEach(input => input.setAttribute('required', 'true'));
+    }
+
+    if (type === 'business') {
+        document
+            .querySelectorAll('#business-form .form-input')
+            .forEach(input => input.setAttribute('required', 'true'));
+    }
+}
+
+
         // Registration type switching
         function switchRegType(type, clickedButton) {   
             // Remove active class from ALL tabs
@@ -271,6 +291,8 @@
             document.getElementById('personal-form').style.display = type === 'personal' ? 'block' : 'none';
             document.getElementById('business-form').style.display = type === 'business' ? 'block' : 'none';
     
+            toggleRequiredFields(type);
+
             // Reset business form to step 1 when switching
             if (type === 'business') {
                 document.getElementById('business-step-1').classList.add('active');
@@ -463,20 +485,91 @@
         }
         
         function handleRegister(e) {
-            e.preventDefault();
-            const isBusiness = document.getElementById('business-form').style.display !== 'none';
-            
-            if (isBusiness) {
-                const isStep2 = document.getElementById('business-step-2').classList.contains('active');
-                if (!isStep2) {
-                    alert('Please complete all steps');
-                    return;
-                }
-            }
-            
-            alert('Registration successful!');
-            switchTab('login');
+    e.preventDefault();
+
+    // Detect active registration type correctly
+    const activeRegType = document.querySelector('.reg-type-tab.active')?.textContent.toLowerCase();
+
+    /* ======================
+   PERSONAL REGISTRATION
+   ====================== */
+if (activeRegType === 'personal') {
+
+    const personalInputs = document.querySelectorAll('#personal-form .form-input');
+
+    const name = personalInputs[0].value.trim();
+    const email = personalInputs[1].value.trim();
+    const password = personalInputs[2].value;
+    const confirmPassword = personalInputs[3].value;
+
+    // Basic validation
+    if (!name || !email || !password || !confirmPassword) {
+        alert('Please fill all personal registration fields');
+        return;
+    }
+
+    if (!email.includes('@')) {
+        alert('Please enter a valid email address');
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+    }
+
+    if (password.length < 8) {
+        alert('Password must be at least 8 characters long');
+        return;
+    }
+
+    // Get existing users
+    const users = JSON.parse(localStorage.getItem('flarebook_users')) || [];
+
+    // Prevent duplicate email
+    const emailExists = users.some(user => user.email === email);
+    if (emailExists) {
+        alert('An account with this email already exists');
+        return;
+    }
+
+    // Create personal user object
+    const personalUser = {
+        id: Date.now(),
+        name: name,
+        email: email,
+        password: password, // ⚠️ demo only (no hashing)
+        type: 'personal',
+        createdAt: new Date().toISOString()
+    };
+
+    // Save to localStorage
+    users.push(personalUser);
+    localStorage.setItem('flarebook_users', JSON.stringify(users));
+
+    alert('Personal account registered successfully!');
+    switchTab('login');
+    return;
+}
+
+
+    /* ======================
+       BUSINESS REGISTRATION
+       ====================== */
+    if (activeRegType === 'business') {
+        const isStep2 = document
+            .getElementById('business-step-2')
+            .classList.contains('active');
+
+        if (!isStep2) {
+            alert('Please complete all business registration steps');
+            return;
         }
+
+        completeBusinessRegistration();
+    }
+}
+
         
         function completeBusinessRegistration() {
             // Collect all business data
@@ -647,6 +740,11 @@
                 });
             });
         }
+        document.addEventListener('DOMContentLoaded', function () {
+    toggleRequiredFields('personal');
+    generateCaptcha();
+});
+
     </script>
 </body>
 </html>

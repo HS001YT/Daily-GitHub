@@ -1,0 +1,204 @@
+<style>
+/* Center Footer Content */
+.footer-section:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-section:first-child .footer-logo {
+    margin-bottom: 25px;
+}
+
+.footer-section:first-child .footer-logo-img {
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.footer-section:first-child .social-media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.footer-section:first-child .social-link {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #1A1A1A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.footer-section:first-child .social-link:hover {
+    background: linear-gradient(135deg, #FF6B00 0%, #FF3D00 100%);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+}
+
+.footer-section:first-child .contact-info {
+    color: #CCCCCC;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.footer-section:first-child .contact-info i {
+    color: #FF6B00;
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Center Copyright */
+.copyright {
+    text-align: center;
+    width: 100%;
+    margin-top: 0px;
+    padding-top: 20px;
+    border-top: 1px solid #333333;
+}
+
+.copyright p {
+    color: #CCCCCC;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.copyright i {
+    color: #FF3D00;
+    margin: 0 5px;
+}
+
+/* Fix Pre-order Count Display */
+.preorder-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.preorder-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background: rgba(13, 13, 13, 0.8);
+    border-radius: 10px;
+    color: white;
+    font-size: 0.9rem;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.preorder-btn {
+    width: 100%;
+    padding: 12px 25px;
+    font-size: 0.95rem;
+    border: 2px solid #FF6B00;
+    background: transparent;
+    color: #FF6B00;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .preorder-info {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .preorder-count {
+        order: 1;
+        margin-bottom: 10px;
+    }
+    
+    .preorder-btn {
+        order: 2;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+
+</style>
+
+<!-- Footer -->
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Logo and Social Media -->
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="https://iili.io/fEUmT7I.md.jpg" alt="FlareBook Store" class="footer-logo-img">
+                </div>
+                <div class="social-media">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> support@flarebookstore.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="assets/pages/category.html">Categories</a></li>
+                    <li><a href="assets/pages/cart.html">Shopping Cart</a></li>
+                    <li><a href="assets/pages/wishlist.html">Wishlist</a></li>
+                    <li><a href="assets/pages/orders.html">My Orders</a></li>
+                    <li><a href="assets/pages/profile.html">My Account</a></li>
+                    <li><a href="assets/pages/about.html">About Us</a></li>
+                </ul>
+            </div>
+            
+            <!-- Policies -->
+            <div class="footer-section">
+                <h3 class="footer-heading">Policies</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Refund Policy <span class="policy-note">(No Refunds)</span></a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>&copy; 2025 FlareBook Store. All rights reserved. | Designed with <i class="fas fa-heart"></i> for book lovers worldwide</p>
+            </div>
+        </div>
+    </div>
+</footer>

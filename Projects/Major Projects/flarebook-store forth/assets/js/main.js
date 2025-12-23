@@ -45,6 +45,7 @@ class FlareBookStore {
         
         // Setup features
         this.setupHeaderScroll();
+        this.setupScrollToTop();
         this.bindEvents();
         
         // Hide loading screen after everything is ready
@@ -581,6 +582,91 @@ logout() {
     
     console.log('Logout redirecting to:', homePath);
     window.location.href = homePath;
+
+    
+}
+// Add this method to the FlareBookStore class:
+
+// ===== SCROLL TO TOP FUNCTIONALITY =====
+setupScrollToTop() {
+    const scrollBtn = document.getElementById('scrollToTopBtn');
+    if (!scrollBtn) return;
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        // Show button after scrolling 300px
+        if (scrollTop > 300) {
+            scrollBtn.classList.add('visible');
+            
+            // Add "near-top" class when close to top (last 20% of scroll)
+            const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
+            if (scrollPercentage < 20) {
+                scrollBtn.classList.add('near-top');
+            } else {
+                scrollBtn.classList.remove('near-top');
+            }
+        } else {
+            scrollBtn.classList.remove('visible');
+            scrollBtn.classList.remove('near-top');
+        }
+    });
+    
+    // Scroll to top with variable speed
+    scrollBtn.addEventListener('click', () => {
+        this.scrollToTopWithVariableSpeed();
+    });
+    
+    // Add to keyboard navigation
+    scrollBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.scrollToTopWithVariableSpeed();
+        }
+    });
+}
+
+scrollToTopWithVariableSpeed() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollPercentage = (scrollTop / documentHeight) * 100;
+    
+    // Variable duration based on scroll position
+    let duration;
+    if (scrollPercentage > 80) {
+        duration = 800; // Fast when at bottom
+    } else if (scrollPercentage > 50) {
+        duration = 1200; // Medium speed
+    } else if (scrollPercentage > 20) {
+        duration = 1600; // Slower
+    } else {
+        duration = 2000; // Slowest when near top
+    }
+    
+    // Easing function for smooth animation
+    const easeInOutCubic = (t) => {
+        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    };
+    
+    const startTime = performance.now();
+    const startPosition = scrollTop;
+    
+    const animateScroll = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = easeInOutCubic(progress);
+        
+        window.scrollTo(0, startPosition * (1 - easeProgress));
+        
+        if (progress < 1) {
+            requestAnimationFrame(animateScroll);
+        }
+    };
+    
+    requestAnimationFrame(animateScroll);
 }
 }
 
@@ -613,3 +699,4 @@ function toggleGstinField(show) {
         gstinField.style.display = show ? 'block' : 'none';
     }
 }
+

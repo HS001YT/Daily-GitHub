@@ -1,0 +1,29 @@
+/* Used the pre-existed table */
+
+USE company;
+
+USE employees;
+
+SELECT * FROM employees;
+
+| id | name    | salary |
+| -- | ------- | ------ |
+| 1  | Harshit | 50000  |
+| 2  | Aarav   | 75000  |
+| 3  | Riya    | 60000  |
+| 4  | Mohan   | 75000  |
+| 5  | Neha    | 85000  |
+| 6  | Karan   | 45000  |
+
+SELECT *
+FROM employees
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+);
+
+| id | name  | salary |
+| -- | ----- | ------ |
+| 2  | Aarav | 75000  |
+| 4  | Mohan | 75000  |
+| 5  | Neha  | 85000  |

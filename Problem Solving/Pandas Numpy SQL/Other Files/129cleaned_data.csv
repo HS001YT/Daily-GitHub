@@ -1,0 +1,5 @@
+id,name,age,salary,city,joining_date,salary_level,experience_days,name_upper,annual_bonus,is_senior
+1,Alice,22.0,45000.0,Delhi,2023-01-10,Low,1101,ALICE,4500.0,Yes
+2,Bob,22.5,50000.0,Mumbai,2022-12-01,Medium,1141,BOB,5000.0,Yes
+3,Charlie,24.0,46250.0,Delhi,2023-03-15,Medium,1037,CHARLIE,4625.0,Yes
+4,David,21.0,42000.0,Unknown,2023-06-20,Low,940,DAVID,4200.0,Yes

@@ -1,0 +1,4 @@
+city,employee_count,avg_salary,max_salary
+Delhi,2,45625.0,46250.0
+Mumbai,1,50000.0,50000.0
+Unknown,1,42000.0,42000.0

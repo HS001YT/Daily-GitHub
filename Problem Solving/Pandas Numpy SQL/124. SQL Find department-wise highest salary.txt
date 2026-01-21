@@ -2,8 +2,6 @@
 
 USE company;
 
-USE employees;
-
 SELECT * FROM employees;
 
 | emp_id | emp_name | salary | dept_id |

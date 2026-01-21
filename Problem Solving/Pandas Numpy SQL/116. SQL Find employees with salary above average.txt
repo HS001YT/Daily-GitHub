@@ -2,8 +2,6 @@
 
 USE company;
 
-USE employees;
-
 SELECT * FROM employees;
 
 | id | name    | salary |

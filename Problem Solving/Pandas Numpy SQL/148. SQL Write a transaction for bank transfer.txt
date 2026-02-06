@@ -1,0 +1,50 @@
+USE company;
+
+/* Display employees table */
+
+SELECT * FROM employees;
+
+| emp_id | emp_name | salary | dept_id |
+| ------ | -------- | ------ | ------- |
+| 1      | Amit     | 50000  | 10      |
+| 2      | Riya     | 60000  | 10      |
+| 3      | Rahul    | 90000  | 10      |
+| 4      | Neha     | 70000  | 20      |
+| 5      | Karan    | 85000  | 20      |
+| 6      | Pooja    | 85000  | 20      |
+
+
+/* TASK: Bank Transfer Transaction
+   Transfer 10000 from Amit (emp_id = 1) to Riya (emp_id = 2) */
+
+START TRANSACTION;
+
+/* Debit amount from sender (Amit) */
+
+UPDATE employees
+SET salary = salary - 10000
+WHERE emp_id = 1;
+
+/* Credit amount to receiver (Riya) */
+
+UPDATE employees
+SET salary = salary + 10000
+WHERE emp_id = 2;
+
+/* Commit transaction */
+
+COMMIT;
+
+
+/* Display employees table after transaction */
+
+SELECT * FROM employees;
+
+| emp_id | emp_name | salary | dept_id |
+| ------ | -------- | ------ | ------- |
+| 1      | Amit     | 40000  | 10      |
+| 2      | Riya     | 70000  | 10      |
+| 3      | Rahul    | 90000  | 10      |
+| 4      | Neha     | 70000  | 20      |
+| 5      | Karan    | 85000  | 20      |
+| 6      | Pooja    | 85000  | 20      |

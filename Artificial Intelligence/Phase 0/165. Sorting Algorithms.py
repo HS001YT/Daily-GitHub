@@ -134,6 +134,81 @@ def partition(arr, low, high):
 
 
 
+def counting_sort(arr):
+    if len(arr) == 0:
+        return arr
+
+    max_val = max(arr)
+    min_val = min(arr)
+
+    # Handle negative numbers as well
+    range_of_elements = max_val - min_val + 1
+
+    count = [0] * range_of_elements
+    output = [0] * len(arr)
+
+    # Count frequency
+    for num in arr:
+        count[num - min_val] += 1
+
+    # Prefix sum (to make it stable)
+    for i in range(1, len(count)):
+        count[i] += count[i - 1]
+
+    # Build output array (reverse loop for stability)
+    for i in range(len(arr) - 1, -1, -1):
+        output[count[arr[i] - min_val] - 1] = arr[i]
+        count[arr[i] - min_val] -= 1
+
+    return output
+
+
+
+
+def radix_sort(arr):
+    if len(arr) == 0:
+        return arr
+
+    max_num = max(arr)
+    exp = 1  # 10^i
+
+    while max_num // exp > 0:
+        counting_sort_for_radix(arr, exp)
+        exp *= 10
+
+    return arr
+
+
+
+
+def bucket_sort(arr):
+    if len(arr) == 0:
+        return arr
+
+    bucket_count = len(arr)
+    buckets = [[] for _ in range(bucket_count)]
+
+    # Put elements into buckets
+    for num in arr:
+        index = int(bucket_count * num)
+        if index == bucket_count:
+            index -= 1
+        buckets[index].append(num)
+
+    # Sort individual buckets
+    for i in range(bucket_count):
+        buckets[i].sort()
+
+    # Concatenate buckets
+    sorted_array = []
+    for bucket in buckets:
+        sorted_array.extend(bucket)
+
+    return sorted_array
+
+
+
+
 def main_menu():
     while True:
         print("\n====== SORTING MENU ======")
@@ -143,7 +218,10 @@ def main_menu():
         print("4. Merge Sort (Best for large datasets, stable)")
         print("5. Quick Sort (Best average performance, large data)")
         print("6. Heap Sort (Guaranteed O(n log n), in-place)")
-        print("7. Exit")
+        print("7. Counting Sort (Best for small integer ranges)")
+        print("8. Radix Sort (Digit-by-digit integer sorting)")
+        print("9. Bucket Sort (Best for uniformly distributed float data)")
+        print("10. Exit")
 
         try:
             choice = int(input("Enter your choice: "))
@@ -151,23 +229,33 @@ def main_menu():
             print("Invalid input! Enter a number.")
             continue
 
-        if choice == 7:
+        if choice == 10:
             print("Exiting program...")
             break
 
-        if choice < 1 or choice > 7:
+        if choice < 1 or choice > 10:
             print("Invalid choice! Try again.")
             continue
 
-        # Take user input data
-        try:
-            arr = list(map(int, input("Enter elements separated by space: ").split()))
-            if not arr:
-                print("List cannot be empty.")
+        # For Bucket Sort → allow floats
+        if choice == 9:
+            try:
+                arr = list(map(float, input("Enter elements separated by space (0 to 1 range preferred): ").split()))
+                if not arr:
+                    print("List cannot be empty.")
+                    continue
+            except ValueError:
+                print("Invalid input! Enter numbers only.")
                 continue
-        except ValueError:
-            print("Invalid input! Enter integers only.")
-            continue
+        else:
+            try:
+                arr = list(map(int, input("Enter elements separated by space: ").split()))
+                if not arr:
+                    print("List cannot be empty.")
+                    continue
+            except ValueError:
+                print("Invalid input! Enter integers only.")
+                continue
 
         arr_copy = arr.copy()
 
@@ -195,3 +283,17 @@ def main_menu():
         elif choice == 6:
             print("Using Heap Sort...")
             print("Sorted Data:", heap_sort(arr_copy))
+
+        elif choice == 7:
+            print("Using Counting Sort...")
+            print("Sorted Data:", counting_sort(arr_copy))
+
+        elif choice == 8:
+            print("Using Radix Sort...")
+            print("Sorted Data:", radix_sort(arr_copy))
+
+        elif choice == 9:
+            print("Using Bucket Sort...")
+            print("Sorted Data:", bucket_sort(arr_copy))
+
+main_menu()

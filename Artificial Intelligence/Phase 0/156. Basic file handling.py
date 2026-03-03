@@ -2,7 +2,7 @@ import os
 import csv
 
 def get_base_path():
-    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "other-files")
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "other_files")
 
 def show_files():
     file_path = get_base_path()
@@ -39,7 +39,7 @@ def read_file(file_name):
     2. Read one line
     3. Read all lines as list
     4. Back
-:-> """))
+ :-> """))
 
         if choice == 4:
             break
@@ -62,7 +62,7 @@ def write_file(file_name):
     2. Overwrite multiple lines
     3. Append multiple lines
     4. Back
-:-> """))
+ :-> """))
 
         if choice == 4:
             break
@@ -131,7 +131,7 @@ def txt_file():
     4. Rename file
     5. Delete file
     6. Back
-:-> """))
+ :-> """))
 
         if choice == 1:
             show_files()
@@ -245,7 +245,7 @@ def csv_file():
     4. Append new row
     5. Create new CSV
     6. Back
-:-> """))
+ :-> """))
 
         if choice == 1:
             show_csv_files()
@@ -282,7 +282,7 @@ def main_menu():
     1. Text file operations
     2. CSV file operations
     3. Exit
-:-> """))
+ :-> """))
 
         if choice == 1:
             txt_file()

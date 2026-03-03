@@ -33,7 +33,7 @@ def open_file():
         print("Only text or csv file.")
         return
     
-    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "other-files")
+    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "other_files")
     files = os.listdir(file_path)
     print("Looking inside:", file_path)
 

@@ -134,6 +134,42 @@ def partition(arr, low, high):
 
 
 
+def heapify(arr, n, i):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+
+    # Check left child
+    if left < n and arr[left] > arr[largest]:
+        largest = left
+
+    # Check right child
+    if right < n and arr[right] > arr[largest]:
+        largest = right
+
+    # If root is not largest
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+
+
+def heap_sort(arr):
+    n = len(arr)
+
+    # Build max heap
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    # Extract elements one by one
+    for i in range(n - 1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]
+        heapify(arr, i, 0)
+
+    return arr
+
+
+
+
 def counting_sort(arr):
     if len(arr) == 0:
         return arr
@@ -209,91 +245,3 @@ def bucket_sort(arr):
 
 
 
-def main_menu():
-    while True:
-        print("\n====== SORTING MENU ======")
-        print("1. Bubble Sort (Best for small or nearly sorted data)")
-        print("2. Selection Sort (When fewer swaps are required)")
-        print("3. Insertion Sort (Best for small or nearly sorted data)")
-        print("4. Merge Sort (Best for large datasets, stable)")
-        print("5. Quick Sort (Best average performance, large data)")
-        print("6. Heap Sort (Guaranteed O(n log n), in-place)")
-        print("7. Counting Sort (Best for small integer ranges)")
-        print("8. Radix Sort (Digit-by-digit integer sorting)")
-        print("9. Bucket Sort (Best for uniformly distributed float data)")
-        print("10. Exit")
-
-        try:
-            choice = int(input("Enter your choice: "))
-        except ValueError:
-            print("Invalid input! Enter a number.")
-            continue
-
-        if choice == 10:
-            print("Exiting program...")
-            break
-
-        if choice < 1 or choice > 10:
-            print("Invalid choice! Try again.")
-            continue
-
-        # For Bucket Sort → allow floats
-        if choice == 9:
-            try:
-                arr = list(map(float, input("Enter elements separated by space (0 to 1 range preferred): ").split()))
-                if not arr:
-                    print("List cannot be empty.")
-                    continue
-            except ValueError:
-                print("Invalid input! Enter numbers only.")
-                continue
-        else:
-            try:
-                arr = list(map(int, input("Enter elements separated by space: ").split()))
-                if not arr:
-                    print("List cannot be empty.")
-                    continue
-            except ValueError:
-                print("Invalid input! Enter integers only.")
-                continue
-
-        arr_copy = arr.copy()
-
-        if choice == 1:
-            print("Using Bubble Sort...")
-            print("Sorted Data:", bubble_sort(arr_copy))
-
-        elif choice == 2:
-            print("Using Selection Sort...")
-            print("Sorted Data:", selection_sort(arr_copy))
-
-        elif choice == 3:
-            print("Using Insertion Sort...")
-            print("Sorted Data:", insertion_sort(arr_copy))
-
-        elif choice == 4:
-            print("Using Merge Sort...")
-            print("Sorted Data:", merge_sort(arr_copy))
-
-        elif choice == 5:
-            print("Using Quick Sort...")
-            quick_sort(arr_copy, 0, len(arr_copy) - 1)
-            print("Sorted Data:", arr_copy)
-
-        elif choice == 6:
-            print("Using Heap Sort...")
-            print("Sorted Data:", heap_sort(arr_copy))
-
-        elif choice == 7:
-            print("Using Counting Sort...")
-            print("Sorted Data:", counting_sort(arr_copy))
-
-        elif choice == 8:
-            print("Using Radix Sort...")
-            print("Sorted Data:", radix_sort(arr_copy))
-
-        elif choice == 9:
-            print("Using Bucket Sort...")
-            print("Sorted Data:", bucket_sort(arr_copy))
-
-main_menu()

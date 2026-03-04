@@ -1,0 +1,2 @@
+2026-03-04 16:32:55,601 - ERROR - Division by zero: float division by zero
+2026-03-04 16:33:09,810 - ERROR - File not found: [Errno 2] No such file or directory: 'hi.json'

@@ -1,0 +1,11 @@
+Review,Sentiment
+"I love this product",Positive
+"This is amazing",Positive
+"Very good experience",Positive
+"Excellent quality",Positive
+"I am happy with this purchase",Positive
+"I hate this item",Negative
+"Very bad service",Negative
+"Worst experience ever",Negative
+"Terrible product",Negative
+"I am disappointed",Negative

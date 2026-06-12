@@ -1,0 +1,53 @@
+<!-- Running the Flask App (Day 266)
+1. Make sure app.py, sentiment_model.joblib, and vectorizer.joblib are in the correct locations.
+2. Open the terminal in the project folder.
+3. Run:
+    python app.py
+4. Open your browser and visit:
+    http://127.0.0.1:5000 -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Sentiment Analyzer
+    </title>
+</head>
+
+<body>
+
+    <h1>
+        Sentiment Analysis App
+    </h1>
+
+    <form action="/predict" method="post">
+
+        <textarea
+            name="review"
+            rows="6"
+            cols="50"
+            placeholder="Enter Review">
+        </textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Predict
+        </button>
+
+    </form>
+
+    {% if prediction %}
+
+        <h2>
+            Sentiment:
+            {{ prediction }}
+        </h2>
+
+    {% endif %}
+
+</body>
+
+</html>

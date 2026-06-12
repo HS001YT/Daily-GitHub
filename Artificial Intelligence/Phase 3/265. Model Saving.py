@@ -91,9 +91,34 @@ def save_using_pickle(model, vectorizer):
     try:
 
         import pickle
+        import os
+
+        base_dir = os.path.dirname(
+            os.path.abspath(__file__)
+        )
+
+        save_dir = os.path.join(
+            base_dir,
+            "other_files"
+        )
+
+        os.makedirs(
+            save_dir,
+            exist_ok=True
+        )
+
+        model_path = os.path.join(
+            save_dir,
+            "sentiment_model.pkl"
+        )
+
+        vectorizer_path = os.path.join(
+            save_dir,
+            "vectorizer.pkl"
+        )
 
         with open(
-            "sentiment_model.pkl",
+            model_path,
             "wb"
         ) as file:
 
@@ -103,7 +128,7 @@ def save_using_pickle(model, vectorizer):
             )
 
         with open(
-            "vectorizer.pkl",
+            vectorizer_path,
             "wb"
         ) as file:
 
@@ -113,7 +138,15 @@ def save_using_pickle(model, vectorizer):
             )
 
         print(
-            "\nSaved using Pickle."
+            "\nSaved Successfully."
+        )
+
+        print(
+            f"Model: {model_path}"
+        )
+
+        print(
+            f"Vectorizer: {vectorizer_path}"
         )
 
     except Exception as e:
@@ -126,9 +159,26 @@ def load_using_pickle():
     try:
 
         import pickle
+        import os
+
+        base_dir = os.path.dirname(
+            os.path.abspath(__file__)
+        )
+
+        model_path = os.path.join(
+            base_dir,
+            "other_files",
+            "sentiment_model.pkl"
+        )
+
+        vectorizer_path = os.path.join(
+            base_dir,
+            "other_files",
+            "vectorizer.pkl"
+        )
 
         with open(
-            "sentiment_model.pkl",
+            model_path,
             "rb"
         ) as file:
 
@@ -137,7 +187,7 @@ def load_using_pickle():
             )
 
         with open(
-            "vectorizer.pkl",
+            vectorizer_path,
             "rb"
         ) as file:
 
@@ -163,19 +213,52 @@ def save_using_joblib(model, vectorizer):
     try:
 
         import joblib
+        import os
+
+        base_dir = os.path.dirname(
+            os.path.abspath(__file__)
+        )
+
+        save_dir = os.path.join(
+            base_dir,
+            "other_files"
+        )
+
+        os.makedirs(
+            save_dir,
+            exist_ok=True
+        )
+
+        model_path = os.path.join(
+            save_dir,
+            "sentiment_model.joblib"
+        )
+
+        vectorizer_path = os.path.join(
+            save_dir,
+            "vectorizer.joblib"
+        )
 
         joblib.dump(
             model,
-            "sentiment_model.joblib"
+            model_path
         )
 
         joblib.dump(
             vectorizer,
-            "vectorizer.joblib"
+            vectorizer_path
         )
 
         print(
-            "\nSaved using Joblib."
+            "\nSaved Successfully."
+        )
+
+        print(
+            f"Model: {model_path}"
+        )
+
+        print(
+            f"Vectorizer: {vectorizer_path}"
         )
 
     except Exception as e:
@@ -188,13 +271,30 @@ def load_using_joblib():
     try:
 
         import joblib
+        import os
 
-        model = joblib.load(
+        base_dir = os.path.dirname(
+            os.path.abspath(__file__)
+        )
+
+        model_path = os.path.join(
+            base_dir,
+            "other_files",
             "sentiment_model.joblib"
         )
 
-        vectorizer = joblib.load(
+        vectorizer_path = os.path.join(
+            base_dir,
+            "other_files",
             "vectorizer.joblib"
+        )
+
+        model = joblib.load(
+            model_path
+        )
+
+        vectorizer = joblib.load(
+            vectorizer_path
         )
 
         print(

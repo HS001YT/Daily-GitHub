@@ -9,3 +9,7 @@ Review,Sentiment
 "Worst experience ever",Negative
 "Terrible product",Negative
 "I am disappointed",Negative
+"Highly recommended",Positive
+"Very satisfied",Positive
+"Poor quality product",Negative
+"Completely useless",Negative

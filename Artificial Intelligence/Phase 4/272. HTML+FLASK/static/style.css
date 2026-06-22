@@ -1,0 +1,17 @@
+body
+{
+    font-family: Arial;
+    margin: 30px;
+}
+
+a
+{
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+h1
+{
+    color: darkblue;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+</head>
+
+<body>
+    <h1>
+        Student Records
+    </h1>
+
+    <table border="1">
+
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Status</th>
+        </tr>
+
+        {% for student in students %}
+
+        <tr>
+            <td>
+                {{ student.name }}
+            </td>
+
+            <td>
+                {{ student.age }}
+            </td>
+
+            <td>
+                {% if student.status == "Pass" %}
+                    Pass
+                {% else %}
+                    Fail
+                {% endif %}
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+</body>
+</html>

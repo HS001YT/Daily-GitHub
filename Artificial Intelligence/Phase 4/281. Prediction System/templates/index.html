@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        House Price Predictor
+    </title>
+
+</head>
+
+<body>
+
+    <h1>
+        House Price Prediction
+    </h1>
+
+    <form
+        action="/predict"
+        method="POST"
+    >
+
+        <input
+            type="number"
+            name="area"
+            placeholder="Area (sq ft)"
+            required
+        >
+
+        <br><br>
+
+        <input
+            type="number"
+            name="bedrooms"
+            placeholder="Bedrooms"
+            required
+        >
+
+        <br><br>
+
+        <input
+            type="number"
+            name="age"
+            placeholder="House Age"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit">
+            Predict Price
+        </button>
+
+    </form>
+
+</body>
+
+</html>

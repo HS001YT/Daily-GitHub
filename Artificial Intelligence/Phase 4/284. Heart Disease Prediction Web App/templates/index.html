@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Heart Disease Predictor</title>
+
+</head>
+
+<body>
+
+<h1>Heart Disease Prediction</h1>
+
+<form action="/predict" method="POST">
+
+<input type="number" name="age" placeholder="Age" required><br><br>
+
+<input type="number" name="sex" placeholder="Sex (0 Female, 1 Male)" required><br><br>
+
+<input type="number" name="cp" placeholder="Chest Pain Type" required><br><br>
+
+<input type="number" name="trestbps" placeholder="Resting Blood Pressure" required><br><br>
+
+<input type="number" name="chol" placeholder="Cholesterol" required><br><br>
+
+<input type="number" name="fbs" placeholder="Fasting Blood Sugar" required><br><br>
+
+<input type="number" name="restecg" placeholder="Rest ECG" required><br><br>
+
+<input type="number" name="thalach" placeholder="Max Heart Rate" required><br><br>
+
+<input type="number" name="exang" placeholder="Exercise Angina" required><br><br>
+
+<input type="number" step="any" name="oldpeak" placeholder="Old Peak" required><br><br>
+
+<input type="number" name="slope" placeholder="Slope" required><br><br>
+
+<input type="number" name="ca" placeholder="CA" required><br><br>
+
+<input type="number" name="thal" placeholder="Thal" required><br><br>
+
+<button type="submit">
+Predict
+</button>
+
+</form>
+
+</body>
+</html>

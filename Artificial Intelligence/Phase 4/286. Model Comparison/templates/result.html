@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Results
+</title>
+
+</head>
+
+<body>
+
+<h1>
+Model Comparison Results
+</h1>
+
+<table border="1">
+
+<tr>
+
+<th>
+Model
+</th>
+
+<th>
+Prediction
+</th>
+
+</tr>
+
+{% for model, prediction in results.items() %}
+
+<tr>
+
+<td>
+{{ model }}
+</td>
+
+<td>
+{{ prediction }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/">
+Try Again
+</a>
+
+</body>
+
+</html>

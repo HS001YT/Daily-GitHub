@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Result
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    {% if success %}
+
+        <h1>
+            Success
+        </h1>
+
+        <h2>
+            {{ result }}
+        </h2>
+
+    {% else %}
+
+        <h1>
+            Error
+        </h1>
+
+        <h2>
+            {{ result }}
+        </h2>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">
+        Go Back
+    </a>
+
+</body>
+
+</html>

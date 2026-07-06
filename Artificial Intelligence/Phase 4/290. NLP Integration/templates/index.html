@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Sentiment Analysis
+</title>
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}"
+>
+
+</head>
+
+<body>
+
+<h1>
+Sentiment Analysis Web App
+</h1>
+
+<form
+    action="/analyze"
+    method="POST"
+>
+
+<textarea
+    name="text"
+    rows="6"
+    cols="50"
+    placeholder="Enter your text..."
+    required
+></textarea>
+
+<br><br>
+
+<button type="submit">
+Analyze Sentiment
+</button>
+
+</form>
+
+</body>
+
+</html>

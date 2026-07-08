@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Resume Classifier
+</title>
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}"
+>
+
+</head>
+
+<body>
+
+<h1>
+Resume Classifier
+</h1>
+
+<form
+    action="/predict"
+    method="POST"
+>
+
+<textarea
+    name="resume"
+    rows="15"
+    cols="80"
+    placeholder="Paste resume text here..."
+    required
+></textarea>
+
+<br><br>
+
+<button type="submit">
+Classify Resume
+</button>
+
+</form>
+
+</body>
+
+</html>

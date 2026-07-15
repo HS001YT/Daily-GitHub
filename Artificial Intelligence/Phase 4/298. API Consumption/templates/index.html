@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+API Consumption
+</title>
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}"
+>
+
+</head>
+
+<body>
+
+<h1>
+Frontend + Flask API
+</h1>
+
+<input
+    type="text"
+    id="userText"
+    placeholder="Enter text"
+>
+
+<button
+    onclick="getPrediction()"
+>
+Predict
+</button>
+
+<h2 id="result">
+Result will appear here
+</h2>
+
+<script>
+
+async function getPrediction()
+{
+
+    const text =
+        document.getElementById(
+            "userText"
+        ).value;
+
+    const response =
+        await fetch(
+            "/predict",
+            {
+                method: "POST",
+
+                headers:
+                {
+                    "Content-Type":
+                    "application/json"
+                },
+
+                body: JSON.stringify(
+                    {
+                        text: text
+                    }
+                )
+            }
+        );
+
+    const data =
+        await response.json();
+
+    if(data.error)
+    {
+        document.getElementById(
+            "result"
+        ).innerText =
+        data.error;
+    }
+
+    else
+    {
+        document.getElementById(
+            "result"
+        ).innerText =
+        "Prediction: "
+        + data.prediction;
+    }
+}
+
+</script>
+
+</body>
+
+</html>

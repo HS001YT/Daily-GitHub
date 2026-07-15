@@ -63,7 +63,7 @@ def predict():
         else:
 
             prediction = "Negative"
-
+ 
         return jsonify(
             {
                 "input": text,

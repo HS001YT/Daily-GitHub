@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>
+    Expense Dashboard
+</h1>
+
+<div class="stats-grid">
+
+    <div class="card">
+
+        <h2>
+            ₹{{ total_amount }}
+        </h2>
+
+        <p>
+            Total Spending
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+            {{ total_transactions }}
+        </h2>
+
+        <p>
+            Transactions
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+            ₹{{ average_expense }}
+        </h2>
+
+        <p>
+            Average Expense
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+            {{ top_expense }}
+        </h2>
+
+        <p>
+            Top Expense
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+            ₹{{ highest_transaction }}
+        </h2>
+
+        <p>
+            Highest Transaction
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+            ₹{{ lowest_transaction }}
+        </h2>
+
+        <p>
+            Lowest Transaction
+        </p>
+
+    </div>
+
+</div>
+
+<div class="chart-container">
+
+    <img
+        src="{{ url_for('static', filename='charts/expense_chart.png') }}"
+        alt="Expense Chart"
+    >
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        House Price Prediction using Deep Learning
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>
+
+            House Price Prediction
+
+        </h1>
+
+        <p class="subtitle">
+
+            Deep Learning Regression using TensorFlow & Keras
+
+        </p>
+
+        <form
+            action="/predict"
+            method="POST"
+        >
+
+            <div class="grid">
+
+                <div>
+
+                    <label>
+
+                        Longitude
+
+                    </label>
+
+                    <input
+                        type="number"
+                        step="0.0001"
+                        name="longitude"
+                        placeholder="-122.23"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Latitude
+
+                    </label>
+
+                    <input
+                        type="number"
+                        step="0.0001"
+                        name="latitude"
+                        placeholder="37.88"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Housing Median Age
+
+                    </label>
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        name="housing_median_age"
+                        placeholder="41"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Total Rooms
+
+                    </label>
+
+                    <input
+                        type="number"
+                        step="1"
+                        name="total_rooms"
+                        placeholder="880"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Total Bedrooms
+
+                    </label>
+
+                    <input
+                        type="number"
+                        step="1"
+                        name="total_bedrooms"
+                        placeholder="129"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Population
+
+                    </label>
+
+                    <input
+                        type="number"
+                        step="1"
+                        name="population"
+                        placeholder="322"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Households
+
+                    </label>
+
+                    <input
+                        type="number"
+                        step="1"
+                        name="households"
+                        placeholder="126"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Median Income
+
+                    </label>
+
+                    <input
+                        type="number"
+                        step="0.0001"
+                        name="median_income"
+                        placeholder="8.3252"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+            <button type="submit">
+
+                Predict House Price
+
+            </button>
+
+        </form>
+
+        {% if prediction %}
+
+        <div class="prediction-card">
+
+            <h2>
+
+                Predicted House Price
+
+            </h2>
+
+            <h1>
+
+                {{ prediction }}
+
+            </h1>
+
+        </div>
+
+        {% endif %}
+
+        {% if error %}
+
+        <div class="error-card">
+
+            <h3>
+
+                Error
+
+            </h3>
+
+            <p>
+
+                {{ error }}
+
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Diabetes Prediction using Deep Learning
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>
+
+            Diabetes Prediction
+
+        </h1>
+
+        <p class="subtitle">
+
+            Binary Classification using TensorFlow & Keras
+
+        </p>
+
+        <form
+            action="/predict"
+            method="POST"
+        >
+
+            <div class="grid">
+
+                <div>
+
+                    <label>
+
+                        Pregnancies
+
+                    </label>
+
+                    <input
+                        type="number"
+                        name="pregnancies"
+                        placeholder="6"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Glucose
+
+                    </label>
+
+                    <input
+                        type="number"
+                        name="glucose"
+                        placeholder="148"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Blood Pressure
+
+                    </label>
+
+                    <input
+                        type="number"
+                        name="blood_pressure"
+                        placeholder="72"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Skin Thickness
+
+                    </label>
+
+                    <input
+                        type="number"
+                        name="skin_thickness"
+                        placeholder="35"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Insulin
+
+                    </label>
+
+                    <input
+                        type="number"
+                        name="insulin"
+                        placeholder="0"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        BMI
+
+                    </label>
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        name="bmi"
+                        placeholder="33.6"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Diabetes Pedigree Function
+
+                    </label>
+
+                    <input
+                        type="number"
+                        step="0.001"
+                        name="diabetes_pedigree"
+                        placeholder="0.627"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Age
+
+                    </label>
+
+                    <input
+                        type="number"
+                        name="age"
+                        placeholder="50"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+            <button type="submit">
+
+                Predict
+
+            </button>
+
+        </form>
+
+        {% if prediction %}
+
+        <div class="result success">
+
+            <h2>
+
+                Prediction
+
+            </h2>
+
+            <h1>
+
+                {{ prediction }}
+
+            </h1>
+
+            <h3>
+
+                Confidence
+
+            </h3>
+
+            <p>
+
+                {{ confidence }}
+
+            </p>
+
+        </div>
+
+        {% endif %}
+
+        {% if error %}
+
+        <div class="result error">
+
+            <h2>
+
+                Error
+
+            </h2>
+
+            <p>
+
+                {{ error }}
+
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>

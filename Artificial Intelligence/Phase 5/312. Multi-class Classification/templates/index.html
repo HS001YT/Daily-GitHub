@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+
+        Handwritten Digit Recognition
+
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>
+
+            Handwritten Digit Recognition
+
+        </h1>
+
+        <p class="subtitle">
+
+            Multi-Class Classification using TensorFlow & Keras
+
+        </p>
+
+        <form
+            action="/predict"
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            <div class="upload-box">
+
+                <label for="image">
+
+                    Select an Image
+
+                </label>
+
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept=".png,.jpg,.jpeg"
+                    onchange="previewImage(event)"
+                    required
+                >
+
+            </div>
+
+            <div class="preview">
+
+                <img
+                    id="preview"
+                    src=""
+                    alt="Image Preview"
+                    style="display:none;"
+                >
+
+            </div>
+
+            <button type="submit">
+
+                Predict Digit
+
+            </button>
+
+        </form>
+
+        {% if prediction is defined %}
+
+        <div class="result success">
+
+            <h2>
+
+                Prediction
+
+            </h2>
+
+            <h1>
+
+                {{ prediction }}
+
+            </h1>
+
+            <h3>
+
+                Confidence
+
+            </h3>
+
+            <p>
+
+                {{ confidence }}
+
+            </p>
+
+            {% if image_name %}
+
+            <small>
+
+                Uploaded File:
+                {{ image_name }}
+
+            </small>
+
+            {% endif %}
+
+        </div>
+
+        {% endif %}
+
+        {% if error %}
+
+        <div class="result error">
+
+            <h2>
+
+                Error
+
+            </h2>
+
+            <p>
+
+                {{ error }}
+
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

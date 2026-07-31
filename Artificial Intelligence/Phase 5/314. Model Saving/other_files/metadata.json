@@ -1,0 +1,11 @@
+{
+    "model_name": "Breast Cancer Detection",
+    "version": "1.0",
+    "framework": "TensorFlow",
+    "dataset": "Breast Cancer Wisconsin",
+    "problem_type": "Binary Classification",
+    "accuracy": 100.0,
+    "loss": 0.0074,
+    "epochs": 51,
+    "created_on": "31-07-2026 14:18:36"
+}

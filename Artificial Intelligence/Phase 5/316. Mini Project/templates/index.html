@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+
+        Student Performance Predictor
+
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+
+        Student Performance Predictor
+
+    </h1>
+
+    <p class="subtitle">
+
+        Deep Learning Regression using TensorFlow & Keras
+
+    </p>
+
+<form action="/predict" method="POST">
+
+    <div class="grid">
+
+        <!-- Hours Studied -->
+        <div class="input-box">
+            <label>Hours Studied</label>
+            <input
+                type="number"
+                name="hours_studied"
+                step="0.1"
+                min="0"
+                placeholder="Example: 8"
+                required
+            >
+        </div>
+
+        <!-- Attendance -->
+        <div class="input-box">
+            <label>Attendance (%)</label>
+            <input
+                type="number"
+                name="attendance"
+                step="0.1"
+                min="0"
+                max="100"
+                placeholder="Example: 92"
+                required
+            >
+        </div>
+
+        <!-- Previous Scores -->
+        <div class="input-box">
+            <label>Previous Scores</label>
+            <input
+                type="number"
+                name="previous_scores"
+                step="0.1"
+                min="0"
+                max="100"
+                placeholder="Example: 84"
+                required
+            >
+        </div>
+
+        <!-- Sleep Hours -->
+        <div class="input-box">
+            <label>Sleep Hours</label>
+            <input
+                type="number"
+                name="sleep_hours"
+                step="0.1"
+                min="0"
+                placeholder="Example: 7"
+                required
+            >
+        </div>
+
+        <!-- Tutoring Sessions -->
+        <div class="input-box">
+            <label>Tutoring Sessions</label>
+            <input
+                type="number"
+                name="tutoring_sessions"
+                min="0"
+                placeholder="Example: 2"
+                required
+            >
+        </div>
+
+        <!-- Physical Activity -->
+        <div class="input-box">
+            <label>Physical Activity (hrs/week)</label>
+            <input
+                type="number"
+                name="physical_activity"
+                min="0"
+                placeholder="Example: 4"
+                required
+            >
+        </div>
+
+        <!-- Parental Involvement -->
+        <div class="input-box">
+            <label>Parental Involvement</label>
+            <select name="parental_involvement" required>
+                <option value="" disabled selected>Example: High</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <!-- Access to Resources -->
+        <div class="input-box">
+            <label>Access to Resources</label>
+            <select name="access_to_resources" required>
+                <option value="" disabled selected>Example: High</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <!-- Extracurricular Activities -->
+        <div class="input-box">
+            <label>Extracurricular Activities</label>
+            <select name="extracurricular_activities" required>
+                <option value="" disabled selected>Example: Yes</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <!-- Motivation -->
+        <div class="input-box">
+            <label>Motivation Level</label>
+            <select name="motivation_level" required>
+                <option value="" disabled selected>Example: High</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <!-- Internet -->
+        <div class="input-box">
+            <label>Internet Access</label>
+            <select name="internet_access" required>
+                <option value="" disabled selected>Example: Yes</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <!-- Family Income -->
+        <div class="input-box">
+            <label>Family Income</label>
+            <select name="family_income" required>
+                <option value="" disabled selected>Example: Medium</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <!-- Teacher Quality -->
+        <div class="input-box">
+            <label>Teacher Quality</label>
+            <select name="teacher_quality" required>
+                <option value="" disabled selected>Example: High</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <!-- School Type -->
+        <div class="input-box">
+            <label>School Type</label>
+            <select name="school_type" required>
+                <option value="" disabled selected>Example: Public</option>
+                <option value="Public">Public</option>
+                <option value="Private">Private</option>
+            </select>
+        </div>
+
+        <!-- Peer Influence -->
+        <div class="input-box">
+            <label>Peer Influence</label>
+            <select name="peer_influence" required>
+                <option value="" disabled selected>Example: Positive</option>
+                <option value="Negative">Negative</option>
+                <option value="Neutral">Neutral</option>
+                <option value="Positive">Positive</option>
+            </select>
+        </div>
+
+        <!-- Learning Disabilities -->
+        <div class="input-box">
+            <label>Learning Disabilities</label>
+            <select name="learning_disabilities" required>
+                <option value="" disabled selected>Example: No</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <!-- Parent Education -->
+        <div class="input-box">
+            <label>Parental Education Level</label>
+            <select name="parental_education_level" required>
+                <option value="" disabled selected>Example: College</option>
+                <option value="High School">High School</option>
+                <option value="College">College</option>
+                <option value="Postgraduate">Postgraduate</option>
+            </select>
+        </div>
+
+        <!-- Distance -->
+        <div class="input-box">
+            <label>Distance From Home</label>
+            <select name="distance_from_home" required>
+                <option value="" disabled selected>Example: Near</option>
+                <option value="Near">Near</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Far">Far</option>
+            </select>
+        </div>
+
+        <!-- Gender -->
+        <div class="input-box">
+            <label>Gender</label>
+            <select name="gender" required>
+                <option value="" disabled selected>Example: Male</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+
+    </div>
+
+    <button type="submit" class="predict-btn">
+        Predict Student Performance
+    </button>
+
+</form>
+
+{% if prediction %}
+
+<div class="result-card">
+
+<h2>
+
+Prediction Result
+
+</h2>
+
+<h1>
+
+{{ prediction }}
+
+</h1>
+
+<h3>
+
+Performance Level
+
+</h3>
+
+<h2>
+
+{{ performance }}
+
+</h2>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<script
+
+src="{{ url_for('static', filename='script.js') }}"
+
+>
+
+</script>
+
+</body>
+
+</html>
+

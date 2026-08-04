@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+
+        Handwritten Digit Recognition
+
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+
+        Handwritten Digit Recognition
+
+    </h1>
+
+    <p class="subtitle">
+
+        First Convolutional Neural Network using TensorFlow & Keras
+
+    </p>
+
+    <form
+
+        action="/predict"
+
+        method="POST"
+
+        enctype="multipart/form-data"
+
+    >
+
+        <div class="upload-box">
+
+            <label>
+
+                Upload Handwritten Digit Image
+
+            </label>
+
+            <input
+
+                type="file"
+
+                name="image"
+
+                id="image"
+
+                accept=".png,.jpg,.jpeg"
+
+                required
+
+            >
+
+            <small>
+
+                Supported formats: PNG, JPG, JPEG
+
+            </small>
+
+        </div>
+
+        <div id="preview-container">
+
+            <img
+
+                id="preview-image"
+
+                src="#"
+
+                alt="Preview"
+
+            >
+
+        </div>
+
+        <button
+
+            type="submit"
+
+            class="predict-btn"
+
+        >
+
+            Predict Digit
+
+        </button>
+
+    </form>
+
+    {% if error %}
+
+    <div class="error-card">
+
+        {{ error }}
+
+    </div>
+
+    {% endif %}
+
+    {% if prediction is defined %}
+
+    <div class="result-card">
+
+        <h2>
+
+            Prediction
+
+        </h2>
+
+        <h1>
+
+            {{ prediction }}
+
+        </h1>
+
+        <h3>
+
+            Confidence
+
+        </h3>
+
+        <div class="progress">
+
+            <div>
+                <h2>
+                    {{ confidence }}%
+                </h2>
+            </div>
+
+        </div>
+
+        {% if image %}
+
+        <h3>
+
+            Uploaded Image
+
+        </h3>
+
+        <img
+
+            class="uploaded-image"
+
+            src="{{ url_for('static', filename='uploads/' + image) }}"
+
+            alt="Uploaded Image"
+
+        >
+
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+<script
+
+src="{{ url_for('static', filename='script.js') }}"
+
+>
+
+</script>
+
+</body>
+
+</html>

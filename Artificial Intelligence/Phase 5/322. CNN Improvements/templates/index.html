@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        CNN Image Classifier
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ==================================================
+             Header
+        =================================================== -->
+
+        <header class="header">
+
+            <h1>
+                CNN Image Classifier
+            </h1>
+
+            <p>
+                Upload an image and classify it using a
+                CNN trained with data augmentation.
+            </p>
+
+        </header>
+
+
+        <!-- ==================================================
+             Upload Form
+        =================================================== -->
+
+        <form
+            action="{{ url_for('predict') }}"
+            method="POST"
+            enctype="multipart/form-data"
+            class="upload-form"
+        >
+
+            <div class="upload-box">
+
+                <label for="image">
+
+                    Select an Image
+
+                </label>
+
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept=".jpg,.jpeg,.png,.webp"
+                    required
+                >
+
+                <p class="file-info">
+
+                    Supported formats:
+                    JPG, JPEG, PNG, WEBP
+
+                </p>
+
+            </div>
+
+
+            <!-- ==================================================
+                 Image Preview
+            =================================================== -->
+
+            <div
+                id="preview-container"
+                class="preview-container"
+            >
+
+                <h3>
+                    Image Preview
+                </h3>
+
+                <img
+                    id="preview-image"
+                    src="#"
+                    alt="Selected image preview"
+                >
+
+            </div>
+
+
+            <!-- ==================================================
+                 Submit Button
+            =================================================== -->
+
+            <button
+                type="submit"
+                class="predict-btn"
+                id="predict-button"
+            >
+
+                Classify Image
+
+            </button>
+
+        </form>
+
+
+        <!-- ==================================================
+             Error Message
+        =================================================== -->
+
+        {% if error %}
+
+        <div class="error-card">
+
+            <strong>
+                Error
+            </strong>
+
+            <p>
+                {{ error }}
+            </p>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- ==================================================
+             Prediction Result
+        =================================================== -->
+
+        {% if prediction is defined %}
+
+        <div class="result-card">
+
+            <h2>
+                Prediction Result
+            </h2>
+
+
+            <!-- ==================================================
+                 Uploaded Image
+            =================================================== -->
+
+            {% if image %}
+
+            <div class="result-image-container">
+
+                <img
+                    class="result-image"
+                    src="{{ url_for(
+                        'static',
+                        filename='uploads/' + image
+                    ) }}"
+                    alt="Uploaded image"
+                >
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- ==================================================
+                 Main Prediction
+            =================================================== -->
+
+            <div class="prediction">
+
+                <p class="prediction-label">
+
+                    Predicted Object
+
+                </p>
+
+                <h1>
+
+                    {{ prediction|capitalize }}
+
+                </h1>
+
+            </div>
+
+
+            <!-- ==================================================
+                 Confidence
+            =================================================== -->
+
+            <div class="confidence-section">
+
+                <div class="confidence-header">
+
+                    <span>
+                        Confidence
+                    </span>
+
+                    <span>
+                        {{ confidence }}%
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="--progress: {{ confidence }}%;"
+                    >
+
+                        {{ confidence }}%
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================================
+                 Top 3 Predictions
+            =================================================== -->
+
+            {% if top_predictions %}
+
+            <div class="top-predictions">
+
+                <h3>
+                    Top Predictions
+                </h3>
+
+                {% for item in top_predictions %}
+
+                <div class="prediction-row">
+
+                    <span>
+
+                        {{ loop.index }}.
+
+                        {{ item.class|capitalize }}
+
+                    </span>
+
+                    <span>
+
+                        {{ item.confidence }}%
+
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- ==================================================
+                 Data Augmentation Information
+            =================================================== -->
+
+            <div class="model-info">
+
+                <h3>
+                    Model Information
+                </h3>
+
+                <p>
+                    This CNN was trained using data
+                    augmentation techniques including
+                    flipping, rotation, zooming and
+                    translation.
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- ==================================================
+             Footer
+        =================================================== -->
+
+        <footer>
+
+            <p>
+                CNN + Data Augmentation
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <!-- ======================================================
+         JavaScript
+    ======================================================= -->
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+
+</body>
+
+</html>

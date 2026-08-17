@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MobileNetV2 Image Classifier</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>MobileNetV2 Image Classifier</h1>
+            <p>
+                Upload an image and let the pretrained
+                MobileNetV2 model identify it.
+            </p>
+        </header>
+
+
+        <section class="upload-card">
+
+            <h2>Upload Image</h2>
+
+            <form
+                action="{{ url_for('predict') }}"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                <div class="file-box">
+
+                    <label for="image">
+                        Select an image
+                    </label>
+
+                    <input
+                        type="file"
+                        id="image"
+                        name="image"
+                        accept="image/*"
+                        required
+                    >
+
+                    <p>
+                        Example: dog, car, flower, bird,
+                        laptop, bicycle, etc.
+                    </p>
+
+                </div>
+
+
+                <button type="submit">
+                    Classify Image
+                </button>
+
+            </form>
+
+        </section>
+
+
+        {% if error %}
+
+        <div class="error">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+        {% if prediction %}
+
+        <section class="result-card">
+
+            <h2>Prediction Result</h2>
+
+
+            {% if image_path %}
+
+            <div class="uploaded-image">
+
+                <img
+                    src="{{ url_for('static', filename=image_path) }}"
+                    alt="Uploaded image"
+                >
+
+            </div>
+
+            {% endif %}
+
+
+            <div class="best-result">
+
+                <p>Most Likely Prediction</p>
+
+                <h3>
+                    {{ prediction.name }}
+                </h3>
+
+                <strong>
+                    {{ prediction.confidence }}%
+                </strong>
+
+            </div>
+
+
+            <h2>Top 5 Predictions</h2>
+
+
+            <div class="predictions">
+
+                {% for result in results %}
+
+                <div class="prediction">
+
+                    <div class="prediction-info">
+
+                        <span>
+                            {{ loop.index }}.
+                            {{ result.name }}
+                        </span>
+
+                        <span>
+                            {{ result.confidence }}%
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+        <section class="info-card">
+
+            <h2>About This Project</h2>
+
+            <p>
+                This application uses MobileNetV2,
+                a pretrained convolutional neural network
+                trained on the ImageNet dataset.
+            </p>
+
+            <p>
+                Instead of training a CNN from scratch,
+                the project reuses the knowledge learned
+                by the pretrained model.
+            </p>
+
+            <div class="features">
+
+                <div>
+                    <strong>Model</strong>
+                    <span>MobileNetV2</span>
+                </div>
+
+                <div>
+                    <strong>Dataset</strong>
+                    <span>ImageNet</span>
+                </div>
+
+                <div>
+                    <strong>Classes</strong>
+                    <span>1000</span>
+                </div>
+
+                <div>
+                    <strong>Input</strong>
+                    <span>224 × 224 RGB</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <p>
+                Day 325 · Transfer Learning Project
+            </p>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

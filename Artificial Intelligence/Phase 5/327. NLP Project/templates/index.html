@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sentiment Analysis</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <h1>
+                Sentiment Analysis
+            </h1>
+
+            <p>
+                Deep Learning based movie review sentiment classifier
+            </p>
+
+        </header>
+
+
+        <section class="card">
+
+            <h2>
+                Enter Your Review
+            </h2>
+
+            <form
+                action="{{ url_for('predict') }}"
+                method="POST"
+            >
+
+                <textarea
+                    name="text"
+                    placeholder="Example: This movie was absolutely amazing and I really enjoyed it!"
+                    required
+                >{{ text if text else "" }}</textarea>
+
+
+                <button type="submit">
+                    Analyze Sentiment
+                </button>
+
+            </form>
+
+        </section>
+
+
+        {% if error %}
+
+        <div class="error">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+        {% if sentiment %}
+
+        <section class="result-card">
+
+            <h2>
+                Prediction Result
+            </h2>
+
+            <div class="result">
+
+                <p>
+                    Sentiment
+                </p>
+
+                <h3>
+                    {{ sentiment }}
+                </h3>
+
+                <p>
+                    Confidence
+                </p>
+
+                <strong>
+                    {{ confidence }}%
+                </strong>
+
+            </div>
+
+
+            <div class="confidence">
+
+                <div class="confidence-label">
+
+                    <span>
+                        Confidence
+                    </span>
+
+                    <span>
+                        {{ confidence }}%
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="--confidence: {{ confidence }}%;"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+        <section class="info-card">
+
+            <h2>
+                About This Project
+            </h2>
+
+            <p>
+                This application uses an LSTM neural network
+                for binary sentiment classification.
+            </p>
+
+            <div class="details">
+
+                <div>
+                    <strong>Model</strong>
+                    <span>LSTM</span>
+                </div>
+
+                <div>
+                    <strong>Dataset</strong>
+                    <span>IMDB Reviews</span>
+                </div>
+
+                <div>
+                    <strong>Classes</strong>
+                    <span>Positive / Negative</span>
+                </div>
+
+                <div>
+                    <strong>Input</strong>
+                    <span>Movie Review</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <p>
+                Day 327 · NLP Project
+            </p>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

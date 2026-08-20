@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Image Classifier</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <h1>
+                AI Image Classifier
+            </h1>
+
+            <p>
+                CNN-based Cat and Dog Image Classification
+            </p>
+
+        </header>
+
+
+        <section class="card">
+
+            <h2>
+                Upload an Image
+            </h2>
+
+            <form
+                action="{{ url_for('predict') }}"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                <label for="image">
+                    Select an image
+                </label>
+
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept=".jpg,.jpeg,.png,.webp"
+                    required
+                >
+
+                <p class="hint">
+                    Example: cat.jpg, dog.png
+                </p>
+
+
+                <button type="submit">
+                    Classify Image
+                </button>
+
+            </form>
+
+        </section>
+
+
+        {% if error %}
+
+        <div class="error">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+
+        {% if prediction %}
+
+        <section class="result-card">
+
+            <h2>
+                Classification Result
+            </h2>
+
+
+            {% if image_url %}
+
+            <div class="image-container">
+
+                <img
+                    src="{{ image_url }}"
+                    alt="Uploaded image"
+                >
+
+            </div>
+
+            {% endif %}
+
+
+            <div class="result">
+
+                <p>
+                    Predicted Class
+                </p>
+
+                <h3>
+                    {{ prediction }}
+                </h3>
+
+                <p>
+                    Confidence
+                </p>
+
+                <strong>
+                    {{ confidence }}%
+                </strong>
+
+            </div>
+
+
+            <div class="confidence">
+
+                <div class="confidence-label">
+
+                    <span>
+                        Confidence
+                    </span>
+
+                    <span>
+                        {{ confidence }}%
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="--confidence: {{ confidence }}%;"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+        <section class="info-card">
+
+            <h2>
+                About This Project
+            </h2>
+
+            <p>
+                This application uses a Convolutional Neural
+                Network to classify images into two categories.
+            </p>
+
+
+            <div class="details">
+
+                <div>
+
+                    <strong>
+                        Model
+                    </strong>
+
+                    <span>
+                        CNN
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Classes
+                    </strong>
+
+                    <span>
+                        Cat / Dog
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Input Size
+                    </strong>
+
+                    <span>
+                        128 × 128
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Dataset
+                    </strong>
+
+                    <span>
+                        Cats & Dogs Mini Dataset
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <p>
+                Day 329 · Major Deep Learning Project
+            </p>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

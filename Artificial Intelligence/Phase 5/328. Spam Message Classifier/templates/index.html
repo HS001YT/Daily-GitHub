@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SMS Spam Classifier</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <h1>SMS Spam Classifier</h1>
+
+            <p>
+                Deep Learning based spam message detection
+            </p>
+
+        </header>
+
+
+        <section class="card">
+
+            <h2>Check Your Message</h2>
+
+            <form
+                action="{{ url_for('predict') }}"
+                method="POST"
+            >
+
+                <textarea
+                    name="message"
+                    placeholder="Example: Congratulations! You have won a free prize. Click here to claim it!"
+                    required
+                >{{ message if message else "" }}</textarea>
+
+
+                <button type="submit">
+                    Check Message
+                </button>
+
+            </form>
+
+        </section>
+
+
+        {% if error %}
+
+        <div class="error">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+        {% if result %}
+
+        <section class="result-card">
+
+            <h2>Classification Result</h2>
+
+            <div class="result">
+
+                <p>Message Status</p>
+
+                <h3>
+                    {{ result }}
+                </h3>
+
+                <p>Confidence</p>
+
+                <strong>
+                    {{ confidence }}%
+                </strong>
+
+            </div>
+
+
+            <div class="confidence">
+
+                <div class="confidence-label">
+
+                    <span>
+                        Confidence
+                    </span>
+
+                    <span>
+                        {{ confidence }}%
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="--confidence: {{ confidence }}%;"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+        <section class="info-card">
+
+            <h2>About This Project</h2>
+
+            <p>
+                This application uses an LSTM neural network
+                to classify SMS messages as Spam or Not Spam.
+            </p>
+
+            <div class="details">
+
+                <div>
+                    <strong>Model</strong>
+                    <span>LSTM</span>
+                </div>
+
+                <div>
+                    <strong>Dataset</strong>
+                    <span>SMS Spam Collection</span>
+                </div>
+
+                <div>
+                    <strong>Classes</strong>
+                    <span>Spam / Not Spam</span>
+                </div>
+
+                <div>
+                    <strong>Input</strong>
+                    <span>SMS Message</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <p>
+                Day 328 · NLP Project
+            </p>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

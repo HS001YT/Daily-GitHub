@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Image Classifier</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <div class="badge">
+                DEEP LEARNING
+            </div>
+
+            <h1>
+                AI Image Classifier
+            </h1>
+
+            <p>
+                Upload an image and let the CNN identify whether
+                it is a cat or a dog.
+            </p>
+
+        </header>
+
+
+        <main>
+
+            <section class="card upload-card">
+
+                <h2>
+                    Upload Image
+                </h2>
+
+                <p class="subtitle">
+                    Supported formats: JPG, JPEG, PNG, WEBP
+                </p>
+
+
+                <form
+                    action="{{ url_for('predict') }}"
+                    method="POST"
+                    enctype="multipart/form-data"
+                    id="uploadForm"
+                >
+
+                    <label
+                        for="image"
+                        class="drop-zone"
+                        id="dropZone"
+                    >
+
+                        <div
+                            class="upload-icon"
+                            id="uploadIcon"
+                        >
+                            ↑
+                        </div>
+
+                        <h3 id="dropTitle">
+                            Drag & Drop your image
+                        </h3>
+
+                        <p id="dropText">
+                            or click here to browse
+                        </p>
+
+                        <span class="file-hint">
+                            Maximum size: 5 MB
+                        </span>
+
+                        <input
+                            type="file"
+                            id="image"
+                            name="image"
+                            accept=".jpg,.jpeg,.png,.webp"
+                            hidden
+                        >
+
+                    </label>
+
+
+                    <div
+                        class="preview-container"
+                        id="previewContainer"
+                    >
+
+                        <img
+                            id="imagePreview"
+                            src=""
+                            alt="Image preview"
+                        >
+
+                        <div class="preview-info">
+
+                            <strong id="fileName">
+                                Selected image
+                            </strong>
+
+                            <span id="fileSize">
+                                0 KB
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="button-group">
+
+                        <button
+                            type="submit"
+                            class="classify-btn"
+                            id="classifyBtn"
+                        >
+                            <span id="buttonText">
+                                Classify Image
+                            </span>
+
+                            <span
+                                id="loader"
+                                class="loader"
+                            ></span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="reset-btn"
+                            id="resetBtn"
+                        >
+                            Reset
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            {% if error %}
+
+            <div class="error">
+
+                <strong>
+                    Error
+                </strong>
+
+                <span>
+                    {{ error }}
+                </span>
+
+            </div>
+
+            {% endif %}
+
+
+            {% if prediction %}
+
+            <section class="card result-card">
+
+                <div class="result-header">
+
+                    <div>
+
+                        <span class="result-label">
+                            PREDICTION
+                        </span>
+
+                        <h2>
+                            Classification Result
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                {% if image_url %}
+
+                <div class="result-image">
+
+                    <img
+                        src="{{ image_url }}"
+                        alt="Uploaded image"
+                    >
+
+                </div>
+
+                {% endif %}
+
+
+                <div class="prediction-box">
+
+                    <span class="result-label">
+                        DETECTED CLASS
+                    </span>
+
+                    <h3 class="prediction">
+                        {{ prediction }}
+                    </h3>
+
+                </div>
+
+
+                <div class="confidence-section">
+
+                    <div class="confidence-header">
+
+                        <span>
+                            Confidence
+                        </span>
+
+                        <strong>
+                            {{ confidence }}%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                            style="--confidence: {{ confidence }}%;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            {% endif %}
+
+
+            <section class="card info-card">
+
+                <h2>
+                    About This Project
+                </h2>
+
+                <p>
+                    This application uses a Convolutional Neural
+                    Network trained on a Cats and Dogs dataset.
+                    The model processes the uploaded image and
+                    predicts its most likely class.
+                </p>
+
+
+                <div class="details">
+
+                    <div class="detail">
+
+                        <span class="detail-title">
+                            Model
+                        </span>
+
+                        <strong>
+                            CNN
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span class="detail-title">
+                            Classes
+                        </span>
+
+                        <strong>
+                            Cat / Dog
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span class="detail-title">
+                            Input
+                        </span>
+
+                        <strong>
+                            128 × 128
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span class="detail-title">
+                            Maximum Upload
+                        </span>
+
+                        <strong>
+                            5 MB
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <footer>
+
+            <p>
+                Day 330 · AI Image Classification
+            </p>
+
+            <p>
+                Flask + TensorFlow + CNN
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+
+</body>
+
+</html>

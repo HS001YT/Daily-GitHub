@@ -2,7 +2,7 @@ import json
 import os
 
 from dotenv import load_dotenv
-from openai import OpenAI
+from google import genai
 
 
 # ---------------------------------------------------------
@@ -12,38 +12,41 @@ from openai import OpenAI
 load_dotenv()
 
 
-API_KEY = os.getenv("OPENAI_API_KEY")
+API_KEY = os.getenv(
+    "GEMINI_API_KEY"
+)
+
 
 MODEL_NAME = os.getenv(
-    "OPENAI_MODEL",
-    "gpt-5.6-luna"
+    "GEMINI_MODEL",
+    "gemini-3.6-flash"
 )
 
 
 # ---------------------------------------------------------
-# Validation
+# API Key Validation
 # ---------------------------------------------------------
 
 if not API_KEY:
 
     raise RuntimeError(
-        "OPENAI_API_KEY is not configured.\n"
+        "GEMINI_API_KEY is not configured.\n"
         "Create a .env file and add:\n"
-        "OPENAI_API_KEY=your_api_key_here"
+        "GEMINI_API_KEY=your_api_key_here"
     )
 
 
 # ---------------------------------------------------------
-# OpenAI Client
+# Gemini Client
 # ---------------------------------------------------------
 
-client = OpenAI(
+client = genai.Client(
     api_key=API_KEY
 )
 
 
 # ---------------------------------------------------------
-# Prompt Configuration
+# System Instructions
 # ---------------------------------------------------------
 
 SYSTEM_PROMPT = """
@@ -53,12 +56,12 @@ Analyze the text provided by the user.
 
 Return ONLY valid JSON.
 
-The JSON should contain these fields:
+The JSON must contain these fields:
 
 {
     "topic": "main topic of the text",
     "category": "general category",
-    "summary": "short summary",
+    "summary": "short summary of the text",
     "keywords": [
         "keyword1",
         "keyword2",
@@ -66,9 +69,14 @@ The JSON should contain these fields:
     ]
 }
 
-Do not include Markdown.
-Do not include code fences.
-Do not include explanations outside the JSON.
+Rules:
+
+1. Return only JSON.
+2. Do not use Markdown.
+3. Do not use code fences.
+4. Do not add explanations outside JSON.
+5. Keep the summary concise.
+6. Extract relevant keywords.
 """
 
 
@@ -77,9 +85,6 @@ Do not include explanations outside the JSON.
 # ---------------------------------------------------------
 
 def validate_text(text):
-    """
-    Validate the user's input.
-    """
 
     if text is None:
 
@@ -102,7 +107,8 @@ def validate_text(text):
 
         raise ValueError(
             "Text is too long. "
-            "Maximum allowed length is 10,000 characters."
+            "Maximum allowed length is "
+            "10,000 characters."
         )
 
 
@@ -110,14 +116,72 @@ def validate_text(text):
 
 
 # ---------------------------------------------------------
+# Response Parsing
+# ---------------------------------------------------------
+
+def parse_response(content):
+
+    content = content.strip()
+
+
+    try:
+
+        result = json.loads(
+            content
+        )
+
+
+    except json.JSONDecodeError:
+
+        cleaned_content = (
+            content
+            .replace(
+                "```json",
+                ""
+            )
+            .replace(
+                "```",
+                ""
+            )
+            .strip()
+        )
+
+
+        try:
+
+            result = json.loads(
+                cleaned_content
+            )
+
+
+        except json.JSONDecodeError as error:
+
+            raise RuntimeError(
+                "The AI response was not "
+                "valid JSON.\n\n"
+                f"Raw response:\n{content}"
+            ) from error
+
+
+    if not isinstance(
+        result,
+        dict
+    ):
+
+        raise RuntimeError(
+            "The AI returned JSON, "
+            "but it was not a JSON object."
+        )
+
+
+    return result
+
+
+# ---------------------------------------------------------
 # LLM Request
 # ---------------------------------------------------------
 
 def analyze_text(text):
-    """
-    Send text to the LLM and return
-    the generated structured response.
-    """
 
     text = validate_text(
         text
@@ -132,32 +196,34 @@ def analyze_text(text):
 
     try:
 
-        response = client.responses.create(
+        interaction = (
+            client.interactions.create(
 
-            model=MODEL_NAME,
+                model=MODEL_NAME,
 
-            instructions=SYSTEM_PROMPT,
+                system_instruction=SYSTEM_PROMPT,
 
-            input=user_prompt,
-
-            temperature=0.2
+                input=user_prompt
+            )
         )
 
 
     except Exception as error:
 
         raise RuntimeError(
-            f"LLM API request failed: {error}"
+            "Gemini API request failed: "
+            f"{error}"
         ) from error
 
 
-    content = response.output_text
+    content = interaction.output_text
 
 
     if not content:
 
         raise RuntimeError(
-            "The LLM returned an empty response."
+            "The Gemini model returned "
+            "an empty response."
         )
 
 
@@ -167,77 +233,17 @@ def analyze_text(text):
 
 
 # ---------------------------------------------------------
-# Response Parsing
-# ---------------------------------------------------------
-
-def parse_response(content):
-    """
-    Convert the LLM response into a Python dictionary.
-    """
-
-    content = content.strip()
-
-
-    try:
-
-        result = json.loads(
-            content
-        )
-
-
-    except json.JSONDecodeError:
-
-        # Sometimes a model may still return
-        # Markdown code fences despite instructions.
-
-        cleaned_content = (
-            content
-            .replace("```json", "")
-            .replace("```", "")
-            .strip()
-        )
-
-
-        try:
-
-            result = json.loads(
-                cleaned_content
-            )
-
-        except json.JSONDecodeError as error:
-
-            raise RuntimeError(
-                "The LLM response was not valid JSON.\n\n"
-                f"Raw response:\n{content}"
-            ) from error
-
-
-    if not isinstance(
-        result,
-        dict
-    ):
-
-        raise RuntimeError(
-            "The LLM returned JSON, "
-            "but it was not a JSON object."
-        )
-
-
-    return result
-
-
-# ---------------------------------------------------------
 # Result Display
 # ---------------------------------------------------------
 
 def display_result(result):
-    """
-    Display the structured AI response.
-    """
 
     print()
+
     print("=" * 60)
+
     print("AI ANALYSIS")
+
     print("=" * 60)
 
 
@@ -260,22 +266,30 @@ def display_result(result):
 def main():
 
     print()
-    print("=" * 60)
-    print("AI PROMPT ANALYZER")
+
     print("=" * 60)
 
+    print("AI PROMPT ANALYZER")
+
+    print("=" * 60)
+
+
     print(
-        "\nEnter text for the LLM to analyze."
+        "\nEnter text for the AI "
+        "to analyze."
     )
 
+
     print(
-        "Type 'exit' to close the application."
+        "Type 'exit' to close "
+        "the application."
     )
 
 
     while True:
 
         print()
+
 
         text = input(
             "Text > "

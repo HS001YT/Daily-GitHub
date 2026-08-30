@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AI Chatbot | Day 336
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="app-container">
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="header-content">
+
+            <div>
+
+                <div class="badge">
+                    DAY 336
+                </div>
+
+                <h1>
+                    AI Chatbot
+                </h1>
+
+                <p>
+                    Flask + Gemini LLM
+                </p>
+
+            </div>
+
+
+            <div class="status">
+
+                <span
+                    class="status-dot"
+                ></span>
+
+                AI Online
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- CHAT AREA -->
+
+    <main
+        class="chat-container"
+        id="chatContainer"
+    >
+
+
+        <!-- WELCOME MESSAGE -->
+
+        <div class="message assistant-message">
+
+            <div class="avatar">
+                AI
+            </div>
+
+
+            <div class="message-content">
+
+                <div class="message-name">
+                    AI Assistant
+                </div>
+
+
+                <div class="message-bubble">
+
+                    Hello! 👋
+
+                    <br><br>
+
+                    I am your AI assistant powered by
+                    Flask and Gemini.
+
+                    <br><br>
+
+                    Ask me anything!
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- INPUT AREA -->
+
+    <footer class="input-area">
+
+        <div class="input-container">
+
+            <textarea
+                id="messageInput"
+                placeholder="Ask anything..."
+                rows="1"
+            ></textarea>
+
+
+            <button
+                id="sendButton"
+                aria-label="Send message"
+            >
+
+                <span
+                    id="sendIcon"
+                >
+                    ➤
+                </span>
+
+
+                <span
+                    id="loadingIcon"
+                    class="loading"
+                ></span>
+
+            </button>
+
+        </div>
+
+
+        <p class="input-hint">
+
+            Press Enter to send ·
+            Shift + Enter for a new line
+
+        </p>
+
+    </footer>
+
+
+</div>
+
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+
+</body>
+
+</html>
